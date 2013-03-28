@@ -1,0 +1,8 @@
+C:\Users\Jacob.Menkus\Documents\Visual Studio 2010\Projects\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\BulletDrizzleContent.contentprojResolveAssemblyReference.cache
+C:\Users\Eduardo\Documents\Visual Studio 2010\Projects\Newest Version\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Jacob.Menkus\Music\BulletDrizzle\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\BulletDrizzleContent.contentprojResolveAssemblyReference.cache
+C:\Users\Eduardo\Documents\Visual Studio 2010\Projects\Sort-of Gamelike Version!!!!\BulletDrizzle\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Eduardo\Documents\Visual Studio 2010\Projects\Now With Sounds!\BulletDrizzle\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Jacob.Menkus\Music\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\BulletDrizzleContent.contentprojResolveAssemblyReference.cache
+C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\ResolveAssemblyReference.cache
