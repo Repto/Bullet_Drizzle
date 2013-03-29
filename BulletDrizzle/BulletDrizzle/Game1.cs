@@ -25,6 +25,7 @@ namespace BulletDrizzle
         //Lists of Different Projectiles. Their speeds are in their separate classes.
         List<playerNormalBullet> pNBlist = new List<playerNormalBullet>();
         List<enemyNormalBullet> eNBlist = new List<enemyNormalBullet>();
+        List<playerUltraBullet> pUBlist = new List<playerUltraBullet>();
         List<GiantLaser> laserList = new List<GiantLaser>();
 
         //Lists of Different Enemies
@@ -46,6 +47,7 @@ namespace BulletDrizzle
         Texture2D gruntTexture;
         Texture2D scoutTexture;
         Texture2D eNBTexture;
+        Texture2D UBTexture;
         Texture2D laserTexture;
 
         //Different explosion textures, for now just one
@@ -97,7 +99,8 @@ namespace BulletDrizzle
 
             // TODO: use this.Content to load your game content here
             laserTexture = Content.Load<Texture2D>("laser");
-            Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture);
+            UBTexture = Content.Load<Texture2D>("ultrabullet");
+            Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture);
             gruntTexture = Content.Load<Texture2D>("enemyGrunt");
             scoutTexture = Content.Load<Texture2D>("enemyScout");
             eNBTexture = Content.Load<Texture2D>("bullet"); //for moment using normal bullet tex for enemy bullet tex, dunno if we'll change this
@@ -145,7 +148,7 @@ namespace BulletDrizzle
             MouseState mouseState = Mouse.GetState();
 
             //Single Instance Updates
-            Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList);
+            Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList, pUBlist);
             healthBar.Update(Player1.health);
             laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
             ultraBar.Update(Player1.USreturn - Player1.USCountdown);
@@ -153,6 +156,10 @@ namespace BulletDrizzle
 
             //Projectiles Update
             foreach (playerNormalBullet bulletHandling in pNBlist)
+            {
+                bulletHandling.Update();
+            }
+            foreach (playerUltraBullet bulletHandling in pUBlist)
             {
                 bulletHandling.Update();
             }
@@ -214,6 +221,17 @@ namespace BulletDrizzle
                     }
                 }
             }
+            for (int i = 0; i < pUBlist.Count; i++)
+            {
+                for (int j = 0; j < gruntList.Count; j++)
+                {
+                    if (pUBlist[i].rectangle.Intersects(gruntList[j].rectangle))
+                    {
+                        pUBlist[i].deleteMark = true;
+                        gruntList[j].health -= pUBlist[i].damage;
+                    }
+                }
+            }
 
             for (int i = 0; i < pNBlist.Count; i++)
             {
@@ -227,10 +245,22 @@ namespace BulletDrizzle
                 }
             }
 
+            for (int i = 0; i < pUBlist.Count; i++)
+            {
+                for (int j = 0; j < scoutList.Count; j++)
+                {
+                    if (pUBlist[i].rectangle.Intersects(scoutList[j].rectangle))
+                    {
+                        pUBlist[i].deleteMark = true;
+                        scoutList[j].health -= pUBlist[i].damage;
+                    }
+                }
+            }
+
             //This next sequence will annoy you, but I wanted it working and it threw me annoying errors.
             if (laserList.Count > 0)
             {
-                if (laserList[0].deathCountdown > 30)
+                if (laserList[0].deathCountdown > 0)
                 {
                     foreach (grunt gruntHandling in gruntList)
                     {
@@ -266,6 +296,14 @@ namespace BulletDrizzle
                 if (pNBlist[i].deleteMark == true)
                 {
                     pNBlist.RemoveAt(i);
+                    i--;
+                }
+            }
+            for (int i = 0; i < pUBlist.Count; i++)
+            {
+                if (pUBlist[i].deleteMark == true)
+                {
+                    pUBlist.RemoveAt(i);
                     i--;
                 }
             }
@@ -315,6 +353,14 @@ namespace BulletDrizzle
                 if (pNBlist[i].rectangle.X > screenDimensions.X || pNBlist[i].rectangle.X < 0)
                 {
                     pNBlist.RemoveAt(i);
+                    if (i > 0) { i--; } else { break; }
+                }
+            }
+            for (int i = 0; i < pUBlist.Count; i++)
+            {
+                if (pUBlist[i].rectangle.X > screenDimensions.X || pUBlist[i].rectangle.X < 0)
+                {
+                    pUBlist.RemoveAt(i);
                     if (i > 0) { i--; } else { break; }
                 }
             }
@@ -369,6 +415,10 @@ namespace BulletDrizzle
                 bulletHandling.Draw(spriteBatch);
             }
             foreach (enemyNormalBullet bulletHandling in eNBlist)
+            {
+                bulletHandling.Draw(spriteBatch);
+            }
+            foreach (playerUltraBullet bulletHandling in pUBlist)
             {
                 bulletHandling.Draw(spriteBatch);
             }

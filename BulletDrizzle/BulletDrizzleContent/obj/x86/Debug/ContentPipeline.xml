@@ -82,6 +82,15 @@
       <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyScout.xnb</Output>
       <Time>2013-03-29T00:01:55.7784343+00:00</Time>
     </Item>
+    <Item>
+      <Source>ultrabullet.png</Source>
+      <Name>ultrabullet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\ultrabullet.xnb</Output>
+      <Time>2013-03-29T09:03:20.9494738+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

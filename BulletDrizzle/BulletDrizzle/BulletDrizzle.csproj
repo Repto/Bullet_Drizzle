@@ -118,6 +118,7 @@
     <Compile Include="grunt.cs" />
     <Compile Include="player.cs" />
     <Compile Include="playerNormalBullet.cs" />
+    <Compile Include="playerUltraBullet.cs" />
     <Compile Include="projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
