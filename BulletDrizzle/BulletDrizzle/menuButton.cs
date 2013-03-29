@@ -13,6 +13,7 @@ namespace BulletDrizzle
         Texture2D texture;
         Rectangle rectangle;
         Color color = new Color(125, 125, 125);
+        public bool preclicked = false;
         public bool clicked = false;
 
         public menuButton(Texture2D inputTexture, Vector2 screenDimensions, int percentHeight)
@@ -29,12 +30,16 @@ namespace BulletDrizzle
                 color = new Color(255, 255, 255);
                 if (mouse.LeftButton == ButtonState.Pressed)
                 {
-                    clicked = true;
+                    preclicked = true;
                 }
             }
             else
             {
                 color = new Color(125, 125, 125);
+            }
+            if (preclicked && (mouse.LeftButton == ButtonState.Released || (!(new Rectangle(mouse.X, mouse.Y, 1, 1).Intersects(rectangle)))))
+            {
+                clicked = true;
             }
         }
 

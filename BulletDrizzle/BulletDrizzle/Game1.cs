@@ -28,6 +28,7 @@ namespace BulletDrizzle
         List<enemyNormalBullet> eNBlist = new List<enemyNormalBullet>();
         List<playerUltraBullet> pUBlist = new List<playerUltraBullet>();
         List<GiantLaser> laserList = new List<GiantLaser>();
+        List<playerBigBullet> superBulletList = new List<playerBigBullet>();
 
         //Lists of Different Enemies
         List<grunt> gruntList = new List<grunt>();
@@ -37,13 +38,16 @@ namespace BulletDrizzle
         List<ExplosionParticle> explosionsList = new List<ExplosionParticle>();
 
         //Single instances go here.
+        SpriteFont font;
         Texture2D menuTexture;
+        Texture2D gameOverTexture;
         Texture2D playButtonTexture;
         Texture2D quitButtonTexture;
         player Player1;
         Bar healthBar;
         Bar laserBar;
         Bar ultraBar;
+        Bar superBar;
         menuButton playButton;
         menuButton quitButton;
         
@@ -52,6 +56,7 @@ namespace BulletDrizzle
 
         //Enemy and Projectile Textures
         Texture2D gruntTexture;
+        Texture2D BBTexture;
         Texture2D scoutTexture;
         Texture2D eNBTexture;
         Texture2D UBTexture;
@@ -64,14 +69,22 @@ namespace BulletDrizzle
         Random random = new Random();
 
         //Menuness Things
-        enum GameState { menu, main, pause };
+        enum GameState { menu, main, options };
         GameState gameState = GameState.menu;
 
         //Countdowns go here
-        const int gruntSpawnCountdownReturn = 60;
+        const int gruntSpawnCountdownReturn = 45;
         int gruntSpawnCountdown = gruntSpawnCountdownReturn;
-        const int scoutSpawnCountdownReturn = 120;
+        const int scoutSpawnCountdownReturn = 90;
         int scoutSpawnCountdown = scoutSpawnCountdownReturn;
+
+        //Score variables here
+        int score = 0;
+        int gruntKillScore = 100;
+        int scoutKillScore = 200;
+
+        int totalSecondTime = 0;
+        int totalMilliTime = 0;
 
         public Game1()
         {
@@ -110,26 +123,29 @@ namespace BulletDrizzle
 
             // TODO: use this.Content to load your game content here
             laserTexture = Content.Load<Texture2D>("laser");
+            BBTexture = Content.Load<Texture2D>("bigbullet");
             UBTexture = Content.Load<Texture2D>("ultrabullet");
-            Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture);
+            Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
             gruntTexture = Content.Load<Texture2D>("enemyGrunt");
             scoutTexture = Content.Load<Texture2D>("enemyScout");
-            eNBTexture = Content.Load<Texture2D>("bullet"); //for moment using normal bullet tex for enemy bullet tex, dunno if we'll change this
+            eNBTexture = Content.Load<Texture2D>("ememybullet"); //for moment using normal bullet tex for enemy bullet tex, dunno if we'll change this
             healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
             laserBar = new Bar(Content.Load<Texture2D>("white"), 20, 50, 20, 250, Player1.laserReturn, Color.Red, false);
             ultraBar = new Bar(Content.Load<Texture2D>("white"), 20, 80, 20, 250, Player1.USreturn, Color.Purple, false);
+            superBar = new Bar(Content.Load<Texture2D>("white"), 20, 110, 20, 250, Player1.superReturn, Color.Yellow, false);
             healthBar.barColor = Color.Green;
             explosionTextureOne = Content.Load<Texture2D>("explosion");
             menuTexture = Content.Load<Texture2D>("menuscreen");
             playButtonTexture = Content.Load<Texture2D>("playbutton");
             quitButtonTexture = Content.Load<Texture2D>("quitbutton");
 
+            font = Content.Load<SpriteFont>("SpriteFont1");
 
             gunShot = Content.Load<SoundEffect>("Single machinegun shot");
             explodeSound = Content.Load<SoundEffect>("Explosion, explode");
 
             playButton = new menuButton(playButtonTexture, screenDimensions, 45);
-            quitButton = new menuButton(quitButtonTexture, screenDimensions, 75);
+            quitButton = new menuButton(quitButtonTexture, screenDimensions, 80);
         }
 
         /// <summary>
@@ -168,10 +184,11 @@ namespace BulletDrizzle
             {
 
                 //Single Instance Updates
-                Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList, pUBlist);
+                Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList, pUBlist, superBulletList);
                 healthBar.Update(Player1.health);
                 laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
                 ultraBar.Update(Player1.USreturn - Player1.USCountdown);
+                superBar.Update(Player1.superReturn - Player1.superCooldown);
                 //moved color change to Bar.cs
 
                 //Projectiles Update
@@ -180,6 +197,10 @@ namespace BulletDrizzle
                     bulletHandling.Update();
                 }
                 foreach (playerUltraBullet bulletHandling in pUBlist)
+                {
+                    bulletHandling.Update();
+                }
+                foreach (playerBigBullet bulletHandling in superBulletList)
                 {
                     bulletHandling.Update();
                 }
@@ -276,6 +297,32 @@ namespace BulletDrizzle
                     }
                 }
 
+                for (int i = 0; i < superBulletList.Count; i++)
+                {
+                    for (int j = 0; j < gruntList.Count; j++)
+                    {
+                        if (superBulletList[i].rectangle.Intersects(gruntList[j].rectangle))
+                        {
+                            gruntList[j].health -= superBulletList[i].damage;
+                        }
+                    }
+                }
+                if (superBulletList.Count > 0)
+                {
+                    for (int i = 0; i < superBulletList.Count; i++)
+                    {
+                        for (int j = 0; j < scoutList.Count; j++)
+                        {
+                            if (superBulletList[i].rectangle.Intersects(scoutList[j].rectangle))
+                            {
+                                scoutList[j].health -= superBulletList[i].damage;
+                            }
+                        }
+                    }
+                }
+
+                Console.WriteLine(superBulletList.Count);
+
                 //This next sequence will annoy you, but I wanted it working and it threw me annoying errors.
                 if (laserList.Count > 0)
                 {
@@ -336,6 +383,7 @@ namespace BulletDrizzle
                         gruntList.RemoveAt(i);
                         i--;
                         explodeSound.Play();
+                        score += gruntKillScore;
                     }
                 }
 
@@ -349,6 +397,7 @@ namespace BulletDrizzle
                         scoutList.RemoveAt(i);
                         i--;
                         explodeSound.Play();
+                        score += scoutKillScore;
                     }
                 }
 
@@ -383,6 +432,14 @@ namespace BulletDrizzle
                         if (i > 0) { i--; } else { break; }
                     }
                 }
+                for (int i = 0; i < superBulletList.Count; i++)
+                {
+                    if (superBulletList[i].rectangle.X > screenDimensions.X || superBulletList[i].rectangle.X < 0)
+                    {
+                        superBulletList.RemoveAt(i);
+                        if (i > 0) { i--; } else { break; }
+                    }
+                }
                 for (int i = 0; i < eNBlist.Count; i++)
                 {
                     if (eNBlist[i].rectangle.X > screenDimensions.X || eNBlist[i].rectangle.X < 0)
@@ -397,6 +454,7 @@ namespace BulletDrizzle
                     if (gruntList[i].rectangle.X < -gruntList[i].texture.Width)
                     {
                         gruntList.RemoveAt(i);
+                        score -= gruntKillScore;
                         if (i > 0) { i--; } else { break; }
                     }
                 }
@@ -406,9 +464,13 @@ namespace BulletDrizzle
                     if (scoutList[i].rectangle.X < -scoutList[i].texture.Width)
                     {
                         scoutList.RemoveAt(i);
+                        score -= scoutKillScore;
                         if (i > 0) { i--; } else { break; }
                     }
                 }
+
+                totalMilliTime += gameTime.ElapsedGameTime.Milliseconds;
+                totalSecondTime = (int)((float)totalMilliTime / 1000);
 
                 //Countdown updates
                 if (gruntSpawnCountdown > 0) gruntSpawnCountdown--;
@@ -417,7 +479,8 @@ namespace BulletDrizzle
                 if (Player1.health < 1) 
                 { 
                     gameState = GameState.menu;
-                    playButton.clicked = false; 
+                    playButton.clicked = false;
+                    playButton.preclicked = false;
                     Player1.health = Player1.startingHealth; 
                     this.IsMouseVisible = true;
                     pNBlist.Clear();
@@ -425,7 +488,11 @@ namespace BulletDrizzle
                     eNBlist.Clear();
                     scoutList.Clear();
                     gruntList.Clear();
-                    Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture);
+                    laserList.Clear();
+                    totalSecondTime = 0;
+                    totalMilliTime = 0;
+                    superBulletList.Clear();
+                    Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
                     healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
                     healthBar.barColor = Color.Green;
                 }
@@ -436,7 +503,10 @@ namespace BulletDrizzle
             {
                 playButton.Update(mouseState);
                 quitButton.Update(mouseState);
-                if (playButton.clicked) { gameState = GameState.main; this.IsMouseVisible = false; }
+                if (playButton.clicked)
+                {
+                    gameState = GameState.main; score = 0;  this.IsMouseVisible = false; Mouse.SetPosition((int)(Player1.position.X + Player1.texture.Width / 2), (int)(Player1.position.Y + Player1.texture.Height / 2));
+                }
                 if (quitButton.clicked) { this.Exit(); }
             }
 
@@ -470,6 +540,10 @@ namespace BulletDrizzle
                 {
                     bulletHandling.Draw(spriteBatch);
                 }
+                foreach (playerBigBullet bulletHandling in superBulletList)
+                {
+                    bulletHandling.Draw(spriteBatch);
+                }
 
                 //Draw enemy lists
                 foreach (grunt gruntHandling in gruntList)
@@ -487,6 +561,7 @@ namespace BulletDrizzle
                 healthBar.Draw(spriteBatch);
                 laserBar.Draw(spriteBatch);
                 ultraBar.Draw(spriteBatch);
+                superBar.Draw(spriteBatch);
 
                 foreach (GiantLaser laser in laserList)
                 {
@@ -501,6 +576,9 @@ namespace BulletDrizzle
                 {
                     EPHandling.Draw(spriteBatch);
                 }
+
+                spriteBatch.DrawString(font, "Score: " + score.ToString(), new Vector2(screenDimensions.X - 100 - (score.ToString().Length * 10), 16), Color.White);
+                spriteBatch.DrawString(font, "Time Elapsed: " + totalSecondTime.ToString(), new Vector2(screenDimensions.X - 175 - (10 * totalSecondTime.ToString().Length), 42), Color.White);
             }
             else if (gameState == GameState.menu)
             {

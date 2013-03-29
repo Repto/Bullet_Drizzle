@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BulletDrizzle
 {
-    class playerNormalBullet : projectile
+    class playerBigBullet : projectile
     {
-        public playerNormalBullet(Vector2 playerPosition, Vector2 playerTextureDimensions, Texture2D inputTexture, float inputDirection)
+        public playerBigBullet(Vector2 playerPosition, Vector2 playerTextureDimensions, Texture2D inputTexture, float inputDirection)
         {
             texture = inputTexture;
             rectangle = new Rectangle(((int)playerPosition.X + (int)playerTextureDimensions.X - texture.Width / 2), ((int)playerPosition.Y + (int)(playerTextureDimensions.Y / 2) - texture.Height / 2), texture.Width, texture.Height);
@@ -17,8 +17,7 @@ namespace BulletDrizzle
             position.Y = rectangle.Y;
             speed = 10;
             direction = inputDirection;
-            damage = 2;
+            damage = 20;
         }
-        //moved update to projectile should save us some code
     }
 }

@@ -11,3 +11,6 @@ Content\ultrabullet.xnb
 Content\menuscreen.xnb
 Content\playbutton.xnb
 Content\quitbutton.xnb
+Content\SpriteFont1.xnb
+Content\bigbullet.xnb
+Content\ememybullet.xnb

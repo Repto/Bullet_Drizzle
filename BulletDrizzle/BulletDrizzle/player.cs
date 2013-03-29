@@ -16,13 +16,14 @@ namespace BulletDrizzle
         Texture2D bulletTexture;
         Texture2D laserTexture;
         Texture2D ultraBulletTexture;
+        Texture2D superBulletTexture;
         public Vector2 position;
         Vector2 dimensions;
         int speed = 15;
         int countdown = 5;
         public int laserReturn = 360;
         public int laserCooldown = 0;
-        public int startingHealth = 750;
+        public int startingHealth = 1000;
         public int health;
 
         public bool ultraShoot = false;
@@ -31,10 +32,14 @@ namespace BulletDrizzle
         int USLast;
         int USDuration = 360;
 
-        public player(Texture2D inputTexture, Vector2 screenDimensions, Texture2D inputBulletTexture, Texture2D inputLaserTexture, Texture2D inputUltraBulletTexture)
+        public int superReturn = 240;
+        public int superCooldown = 0;
+
+        public player(Texture2D inputTexture, Vector2 screenDimensions, Texture2D inputBulletTexture, Texture2D inputLaserTexture, Texture2D inputUltraBulletTexture, Texture2D inputSuperBulletTexture)
         {
             health = startingHealth;
             texture = inputTexture;
+            superBulletTexture = inputSuperBulletTexture;
             bulletTexture = inputBulletTexture;
             ultraBulletTexture = inputUltraBulletTexture;
             position = new Vector2(10, (screenDimensions.Y / 2) - (texture.Height / 2));
@@ -42,7 +47,7 @@ namespace BulletDrizzle
             laserTexture = inputLaserTexture;
             dimensions = new Vector2(texture.Width, texture.Height);
         }
-        public void Update(MouseState mouse, Vector2 screenDimensions, List<playerNormalBullet> bulletList, SoundEffect gunShot, KeyboardState keyboard, List<GiantLaser> laserList, List<playerUltraBullet> ultraBulletList)
+        public void Update(MouseState mouse, Vector2 screenDimensions, List<playerNormalBullet> bulletList, SoundEffect gunShot, KeyboardState keyboard, List<GiantLaser> laserList, List<playerUltraBullet> ultraBulletList, List<playerBigBullet> superBulletList)
         {
             if (position.X > 0 && position.X < screenDimensions.X - texture.Width && position.Y > 0 && position.Y < screenDimensions.Y - texture.Height)
             {
@@ -188,10 +193,20 @@ namespace BulletDrizzle
                         USCountdown = USreturn;
                     }
                 }
+
+                if (superCooldown == 0)
+                {
+                    if (keyboard.IsKeyDown(Keys.S))
+                    {
+                        superCooldown = superReturn;
+                        superBulletList.Add(new playerBigBullet(position, new Vector2(texture.Width, texture.Height), superBulletTexture, (float)(90 * 0.0174532925)));
+                    }
+                }
                 if (ultraShoot) USLast--;
                 if (countdown > 0) { countdown--; }
                 if (laserCooldown > 0) { laserCooldown--; }
                 if (USCountdown > 0) { USCountdown--; }
+                if (superCooldown > 0) { superCooldown--; }
                 rectangle.X = (int)position.X;
                 rectangle.Y = (int)position.Y;
             }
