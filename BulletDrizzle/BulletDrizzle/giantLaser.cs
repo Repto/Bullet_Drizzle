@@ -13,7 +13,7 @@ namespace BulletDrizzle
         public Rectangle rectangle;
         Color color;
         public int deathCountdown;
-        public int damage = 10;
+        public int damage = 1;
 
         public GiantLaser(Texture2D inputTexture, Vector2 playerPosition, Vector2 playerTextureDimensions, Vector2 screenDimensions)
         {

@@ -38,6 +38,7 @@ namespace BulletDrizzle
         player Player1;
         Bar healthBar;
         Bar laserBar;
+        Bar ultraBar;
         public SoundEffect gunShot;
         public SoundEffect explodeSound;
         
@@ -101,7 +102,8 @@ namespace BulletDrizzle
             scoutTexture = Content.Load<Texture2D>("enemyScout");
             eNBTexture = Content.Load<Texture2D>("bullet"); //for moment using normal bullet tex for enemy bullet tex, dunno if we'll change this
             healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
-            laserBar = new Bar(Content.Load<Texture2D>("white"), 21, 50, 20, 250, Player1.laserCooldown, Color.Red, false);
+            laserBar = new Bar(Content.Load<Texture2D>("white"), 20, 50, 20, 250, Player1.laserReturn, Color.Red, false);
+            ultraBar = new Bar(Content.Load<Texture2D>("white"), 20, 80, 20, 250, Player1.USreturn, Color.Purple, false);
             healthBar.barColor = Color.Green;
             explosionTextureOne = Content.Load<Texture2D>("explosion");
 
@@ -145,7 +147,8 @@ namespace BulletDrizzle
             //Single Instance Updates
             Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList);
             healthBar.Update(Player1.health);
-            laserBar.Update(360 - Player1.laserCooldown);
+            laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
+            ultraBar.Update(Player1.USreturn - Player1.USCountdown);
             //moved color change to Bar.cs
 
             //Projectiles Update
@@ -227,7 +230,7 @@ namespace BulletDrizzle
             //This next sequence will annoy you, but I wanted it working and it threw me annoying errors.
             if (laserList.Count > 0)
             {
-                if (laserList[0].deathCountdown > 0)
+                if (laserList[0].deathCountdown > 30)
                 {
                     foreach (grunt gruntHandling in gruntList)
                     {
@@ -250,7 +253,7 @@ namespace BulletDrizzle
             //If we're not removing them in this loop, can we just use a foreach?
             for (int i = 0; i < eNBlist.Count; i++)
             {
-                if (eNBlist[i].rectangle.Intersects(Player1.rectangle))
+                if (eNBlist[i].rectangle.Intersects(Player1.rectangle) && !(Player1.ultraShoot))
                 {
                     eNBlist[i].deleteMark = true;
                     Player1.health -= eNBlist[i].damage;
@@ -283,9 +286,9 @@ namespace BulletDrizzle
             {
                 if (scoutList[i].health < 0)
                 {
-                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
-                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
-                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
+                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].texture.Width / 2, scoutList[i].position.Y + scoutList[i].texture.Height / 2), random));
+                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].texture.Width / 2, scoutList[i].position.Y + scoutList[i].texture.Height / 2), random));
+                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].texture.Width / 2, scoutList[i].position.Y + scoutList[i].texture.Height / 2), random));
                     scoutList.RemoveAt(i);
                     i--;
                     explodeSound.Play();
@@ -385,6 +388,7 @@ namespace BulletDrizzle
             Player1.draw(spriteBatch);
             healthBar.Draw(spriteBatch);
             laserBar.Draw(spriteBatch);
+            ultraBar.Draw(spriteBatch);
 
             foreach (GiantLaser laser in laserList)
             {

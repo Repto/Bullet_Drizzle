@@ -16,14 +16,14 @@ namespace BulletDrizzle
             position.X = rectangle.X;
             position.Y = rectangle.Y;
             speed = 5;
-            health = 3;
+            health = 1;
             enemyType = 0;
             bulletTexture = inputBulletTexture;
         }
         public void fire()
         {
             bulletList.Add(new enemyNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(270 * 0.0174532925)));
-            bulletCoolDown = 10;
+            bulletCoolDown = 5;
         }
     }
 }
