@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\spaceship.xnb</Output>
-      <Time>2013-03-28T14:55:06+00:00</Time>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\spaceship.xnb</Output>
+      <Time>2013-03-28T22:18:27.6252278+00:00</Time>
     </Item>
     <Item>
       <Source>bullet.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\bullet.xnb</Output>
-      <Time>2013-03-27T14:43:40+00:00</Time>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\bullet.xnb</Output>
+      <Time>2013-03-28T22:18:27.6152218+00:00</Time>
     </Item>
     <Item>
       <Source>enemyGrunt.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyGrunt.xnb</Output>
-      <Time>2013-03-28T14:55:22+00:00</Time>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyGrunt.xnb</Output>
+      <Time>2013-03-28T22:18:27.617223+00:00</Time>
     </Item>
     <Item>
       <Source>white.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\white.xnb</Output>
-      <Time>2013-03-28T12:03:46+00:00</Time>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\white.xnb</Output>
+      <Time>2013-03-28T22:18:27.6252278+00:00</Time>
     </Item>
     <Item>
       <Source>explosion.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\explosion.xnb</Output>
-      <Time>2013-03-28T15:39:48+00:00</Time>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\explosion.xnb</Output>
+      <Time>2013-03-28T22:18:27.6182236+00:00</Time>
     </Item>
     <Item>
       <Source>laser.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\laser.xnb</Output>
-      <Time>2013-03-28T19:50:08+00:00</Time>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\laser.xnb</Output>
+      <Time>2013-03-28T22:18:27.6182236+00:00</Time>
     </Item>
     <Item>
       <Source>Explosion, explode.wav</Source>
@@ -61,8 +61,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\Explosion, explode.xnb</Output>
-      <Time>2013-03-28T17:14:04+00:00</Time>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\Explosion, explode.xnb</Output>
+      <Time>2013-03-28T22:18:27.61222+00:00</Time>
     </Item>
     <Item>
       <Source>Single machinegun shot.wav</Source>
@@ -70,8 +70,17 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\Single machinegun shot.xnb</Output>
-      <Time>2013-03-28T17:18:56+00:00</Time>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\Single machinegun shot.xnb</Output>
+      <Time>2013-03-28T22:18:27.6152218+00:00</Time>
+    </Item>
+    <Item>
+      <Source>enemyScout.png</Source>
+      <Name>enemyScout</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyScout.xnb</Output>
+      <Time>2013-03-29T00:01:55.7784343+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -79,10 +88,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\BulletDrizzle 0.2\BulletDrizzle 0.1\BulletDrizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzleContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzleContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -111,7 +120,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-03-10T16:22:45.928+00:00</Value>
+        <Value>2013-02-17T09:20:51.5724969+00:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

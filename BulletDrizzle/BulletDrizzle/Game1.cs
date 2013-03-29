@@ -29,6 +29,7 @@ namespace BulletDrizzle
 
         //Lists of Different Enemies
         List<grunt> gruntList = new List<grunt>();
+        List<scout> scoutList = new List<scout>();
 
         //Explosion List
         List<ExplosionParticle> explosionsList = new List<ExplosionParticle>();
@@ -37,12 +38,12 @@ namespace BulletDrizzle
         player Player1;
         Bar healthBar;
         Bar laserBar;
-        GiantLaser laser;
         public SoundEffect gunShot;
         public SoundEffect explodeSound;
         
         //Enemy and Projectile Textures
         Texture2D gruntTexture;
+        Texture2D scoutTexture;
         Texture2D eNBTexture;
         Texture2D laserTexture;
 
@@ -55,6 +56,8 @@ namespace BulletDrizzle
         //Countdowns go here
         const int gruntSpawnCountdownReturn = 60;
         int gruntSpawnCountdown = gruntSpawnCountdownReturn;
+        const int scoutSpawnCountdownReturn = 120;
+        int scoutSpawnCountdown = scoutSpawnCountdownReturn;
 
         public Game1()
         {
@@ -95,6 +98,7 @@ namespace BulletDrizzle
             laserTexture = Content.Load<Texture2D>("laser");
             Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture);
             gruntTexture = Content.Load<Texture2D>("enemyGrunt");
+            scoutTexture = Content.Load<Texture2D>("enemyScout");
             eNBTexture = Content.Load<Texture2D>("bullet"); //for moment using normal bullet tex for enemy bullet tex, dunno if we'll change this
             healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
             laserBar = new Bar(Content.Load<Texture2D>("white"), 21, 50, 20, 250, Player1.laserCooldown, Color.Red, false);
@@ -170,9 +174,16 @@ namespace BulletDrizzle
             //Testing over: all spawns go in this section (using different countdowns)
             if (gruntSpawnCountdown == 0)
             {
-                Vector2 spawnPosition = new Vector2(screenDimensions.X, random.Next((int)(screenDimensions.Y - gruntTexture.Height)));
+                Vector2 spawnPosition = new Vector2(screenDimensions.X, random.Next(0, (int)(screenDimensions.Y - gruntTexture.Height)));
                 gruntList.Add(new grunt(spawnPosition, screenDimensions, gruntTexture, eNBTexture));
                 gruntSpawnCountdown = gruntSpawnCountdownReturn;
+            }
+
+            if (scoutSpawnCountdown == 0)
+            {
+                Vector2 spawnPosition = new Vector2(screenDimensions.X, random.Next(0, (int)(screenDimensions.Y - scoutTexture.Height)));
+                scoutList.Add(new scout(spawnPosition, screenDimensions, scoutTexture, eNBTexture));
+                scoutSpawnCountdown = scoutSpawnCountdownReturn;
             }
 
             //Enemy Update
@@ -180,6 +191,12 @@ namespace BulletDrizzle
             {
                 gruntList[i].Update(eNBlist, pNBlist);
                 if (gruntList[i].bulletCoolDown == 0) { gruntList[i].fire(); }
+            }
+
+            for (int i = 0; i < scoutList.Count; i++)
+            {
+                scoutList[i].Update(eNBlist, pNBlist);
+                if (scoutList[i].bulletCoolDown == 0) { scoutList[i].fire(); }
             }
 
             //Enemy hit test
@@ -195,6 +212,18 @@ namespace BulletDrizzle
                 }
             }
 
+            for (int i = 0; i < pNBlist.Count; i++)
+            {
+                for (int j = 0; j < scoutList.Count; j++)
+                {
+                    if (pNBlist[i].rectangle.Intersects(scoutList[j].rectangle))
+                    {
+                        pNBlist[i].deleteMark = true;
+                        scoutList[j].health -= pNBlist[i].damage;
+                    }
+                }
+            }
+
             //This next sequence will annoy you, but I wanted it working and it threw me annoying errors.
             if (laserList.Count > 0)
             {
@@ -205,6 +234,14 @@ namespace BulletDrizzle
                         if (gruntHandling.rectangle.Intersects(laserList[0].rectangle))
                         {
                             gruntHandling.health -= laserList[0].damage;
+                        }
+                    }
+
+                    foreach (scout scoutHandling in scoutList)
+                    {
+                        if (scoutHandling.rectangle.Intersects(laserList[0].rectangle))
+                        {
+                            scoutHandling.health -= laserList[0].damage;
                         }
                     }
                 }
@@ -237,6 +274,19 @@ namespace BulletDrizzle
                     explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
                     explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
                     gruntList.RemoveAt(i);
+                    i--;
+                    explodeSound.Play();
+                }
+            }
+
+            for (int i = 0; i < scoutList.Count; i++)
+            {
+                if (scoutList[i].health < 0)
+                {
+                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
+                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
+                    explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
+                    scoutList.RemoveAt(i);
                     i--;
                     explodeSound.Play();
                 }
@@ -283,8 +333,18 @@ namespace BulletDrizzle
                 }
             }
 
+            for (int i = 0; i < scoutList.Count; i++)
+            {
+                if (scoutList[i].rectangle.X < -gruntList[i].texture.Width)
+                {
+                    scoutList.RemoveAt(i);
+                    if (i > 0) { i--; } else { break; }
+                }
+            }
+
             //Countdown updates
             if (gruntSpawnCountdown > 0) gruntSpawnCountdown--;
+            if (scoutSpawnCountdown > 0) scoutSpawnCountdown--;
 
             base.Update(gameTime);
         }
@@ -314,6 +374,11 @@ namespace BulletDrizzle
             foreach (grunt gruntHandling in gruntList)
             {
                 gruntHandling.Draw(spriteBatch);
+            }
+
+            foreach (scout scoutHandling in scoutList)
+            {
+                scoutHandling.Draw(spriteBatch);
             }
 
             //Single Instance Draws
