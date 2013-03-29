@@ -116,6 +116,7 @@
     <Compile Include="ExplosionParticle.cs" />
     <Compile Include="giantLaser.cs" />
     <Compile Include="grunt.cs" />
+    <Compile Include="menuButton.cs" />
     <Compile Include="player.cs" />
     <Compile Include="playerNormalBullet.cs" />
     <Compile Include="playerUltraBullet.cs" />
