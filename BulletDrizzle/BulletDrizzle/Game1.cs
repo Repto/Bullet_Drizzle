@@ -414,7 +414,21 @@ namespace BulletDrizzle
                 if (gruntSpawnCountdown > 0) gruntSpawnCountdown--;
                 if (scoutSpawnCountdown > 0) scoutSpawnCountdown--;
 
-                if (Player1.health < 1) { this.Exit(); }
+                if (Player1.health < 1) 
+                { 
+                    gameState = GameState.menu;
+                    playButton.clicked = false; 
+                    Player1.health = Player1.startingHealth; 
+                    this.IsMouseVisible = true;
+                    pNBlist.Clear();
+                    pUBlist.Clear();
+                    eNBlist.Clear();
+                    scoutList.Clear();
+                    gruntList.Clear();
+                    Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture);
+                    healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
+                    healthBar.barColor = Color.Green;
+                }
 
             }
 
@@ -422,9 +436,10 @@ namespace BulletDrizzle
             {
                 playButton.Update(mouseState);
                 quitButton.Update(mouseState);
-                if (playButton.clicked) { gameState = GameState.main; }
+                if (playButton.clicked) { gameState = GameState.main; this.IsMouseVisible = false; }
                 if (quitButton.clicked) { this.Exit(); }
             }
+
 
             base.Update(gameTime);
         }
