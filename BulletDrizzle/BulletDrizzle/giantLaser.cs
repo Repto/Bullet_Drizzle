@@ -19,7 +19,7 @@ namespace BulletDrizzle
         {
             texture = inputTexture;
             rectangle = new Rectangle((int)(playerPosition.X + playerTextureDimensions.X), (int)(playerPosition.Y + playerTextureDimensions.Y / 2 - texture.Height / 2), (int)(screenDimensions.X - playerPosition.X), texture.Height);
-            deathCountdown = 60;
+            deathCountdown = 120;
             color = new Color(255, 255, 255, 125);
         }
 

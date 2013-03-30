@@ -182,6 +182,15 @@
       <Extra>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\DST-2ndBallad.wma</Extra>
       <Time>2013-03-30T09:22:31.2620532+00:00</Time>
     </Item>
+    <Item>
+      <Source>enemyInterceptor.png</Source>
+      <Name>enemyInterceptor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyInterceptor.xnb</Output>
+      <Time>2013-03-30T14:51:44.1455995+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
