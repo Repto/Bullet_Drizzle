@@ -9,7 +9,7 @@ namespace BulletDrizzle
 {
     class projectile
     {
-        protected Texture2D texture;
+        public Texture2D texture;
         public Rectangle rectangle;
         protected Vector2 position;
         protected int speed;

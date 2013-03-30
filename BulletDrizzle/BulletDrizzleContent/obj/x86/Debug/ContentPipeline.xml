@@ -145,6 +145,43 @@
       <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\ememybullet.xnb</Output>
       <Time>2013-03-29T18:01:09.234324+00:00</Time>
     </Item>
+    <Item>
+      <Source>gameoverscreen.png</Source>
+      <Name>gameoverscreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\gameoverscreen.xnb</Output>
+      <Time>2013-03-30T08:58:26.7158677+00:00</Time>
+    </Item>
+    <Item>
+      <Source>returnbutton.png</Source>
+      <Name>returnbutton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\returnbutton.xnb</Output>
+      <Time>2013-03-30T08:55:32.4779816+00:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont2.spritefont</Source>
+      <Name>SpriteFont2</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\SpriteFont2.xnb</Output>
+      <Time>2013-03-30T09:04:48.437741+00:00</Time>
+    </Item>
+    <Item>
+      <Source>DST-2ndBallad.mp3</Source>
+      <Name>DST-2ndBallad</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\DST-2ndBallad.xnb</Output>
+      <Extra>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\DST-2ndBallad.wma</Extra>
+      <Time>2013-03-30T09:22:31.2620532+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

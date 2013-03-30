@@ -15,7 +15,7 @@ namespace BulletDrizzle
             rectangle = new Rectangle(((int)enemyPosition.X + texture.Width / 2), ((int)enemyPosition.Y + (int)(enemyTextureDimensions.Y / 2) - texture.Height / 2), texture.Width, texture.Height);
             position.X = rectangle.X;
             position.Y = rectangle.Y;
-            speed = 10;
+            speed = 20;
             direction = inputDirection;
             damage = 1;
         }

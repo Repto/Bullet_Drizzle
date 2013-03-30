@@ -27,12 +27,12 @@ namespace BulletDrizzle
         public int health;
 
         public bool ultraShoot = false;
-        public int USreturn = 2400;
+        public int USreturn = 3000;
         public int USCountdown = 0;
         int USLast;
         int USDuration = 360;
 
-        public int superReturn = 240;
+        public int superReturn = 60;
         public int superCooldown = 0;
 
         public player(Texture2D inputTexture, Vector2 screenDimensions, Texture2D inputBulletTexture, Texture2D inputLaserTexture, Texture2D inputUltraBulletTexture, Texture2D inputSuperBulletTexture)

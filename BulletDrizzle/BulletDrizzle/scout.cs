@@ -20,6 +20,23 @@ namespace BulletDrizzle
             enemyType = 0;
             bulletTexture = inputBulletTexture;
         }
+        public void ScoutUpdate(List<enemyNormalBullet> inputBulletList, int playerY)
+        {
+            rectangle.X -= speed;
+            bulletList = inputBulletList;
+            if (bulletCoolDown > 0) { bulletCoolDown--; }
+            if (rectangle.Y > playerY)
+            {
+                rectangle.Y--;
+            }
+
+            if (rectangle.Y < playerY)
+            {
+                rectangle.Y++;
+            }
+            position.X = rectangle.X;
+            position.Y = rectangle.Y;
+        }
         public void fire()
         {
             bulletList.Add(new enemyNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(270 * 0.0174532925)));
