@@ -23,7 +23,7 @@ namespace BulletDrizzle
         int countdown = 5;
         public int laserReturn = 720;
         public int laserCooldown = 0;
-        public int startingHealth = 150;
+        public int startingHealth = 1000;
         public int health;
 
         public bool ultraShoot = false;

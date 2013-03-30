@@ -118,3 +118,7 @@ C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzl
 C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\DST-2ndBallad.xnb
 C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\DST-2ndBallad.wma
 C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyInterceptor.xnb
+C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\BulletDrizzle.exe.manifest
+C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\BulletDrizzle.application
+C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\obj\x86\Debug\BulletDrizzle.exe.manifest
+C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\obj\x86\Debug\BulletDrizzle.application
