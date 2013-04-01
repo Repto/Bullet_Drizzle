@@ -56,13 +56,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="enemyGrunt.png">
-      <Name>enemyGrunt</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="white.png">
       <Name>white</Name>
       <Importer>TextureImporter</Importer>
@@ -185,6 +178,13 @@
   <ItemGroup>
     <Compile Include="enemyInterceptor.png">
       <Name>enemyInterceptor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="enemyGrunt.png">
+      <Name>enemyGrunt</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

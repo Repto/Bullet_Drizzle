@@ -120,47 +120,17 @@ namespace BulletDrizzle
                 {
                     if (ultraShoot)
                     {
-                        //messiness time. Could possibly do with less code, but its 1am! And I want results, not art.
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(0 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(10 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(20 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(30 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(40 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(50 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(60 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(70 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(80 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(90 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(100 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(110 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(120 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(130 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(140 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(150 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(160 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(170 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(180 * 0.0174532925)));
-                        //Right sided, as > 180
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(180 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(190 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(200 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(210 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(220 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(230 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(240 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(250 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(260 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(270 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(280 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(290 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(300 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(310 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(320 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(330 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(340 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(350 * 0.0174532925)));
-                        ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(360 * 0.0174532925))); 
+                        //why for loops are useful:
+                        for (int degrees = 0; degrees < 181; degrees += 10)
+                        {
+                            ultraBulletList.Add(new playerUltraBullet(position, new Vector2(texture.Width, texture.Height), ultraBulletTexture, (float)(degrees * 0.0174532925)));
+                        }
 
+                        //Right sided, as > 180
+                        for (int degrees = 180; degrees < 361; degrees += 10)
+                        {
+                            ultraBulletList.Add(new playerUltraBullet(position, new Vector2(0, texture.Height), ultraBulletTexture, (float)(degrees * 0.0174532925)));
+                        }
                         countdown = 5;
                         if (USLast < 1) { ultraShoot = false; }
                     }

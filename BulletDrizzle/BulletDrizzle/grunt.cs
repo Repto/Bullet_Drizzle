@@ -15,6 +15,8 @@ namespace BulletDrizzle
             rectangle = new Rectangle((int)(screenDimensions.X), (int)(spawnPosition.Y), texture.Width, texture.Height);
             position.X = rectangle.X;
             position.Y = rectangle.Y;
+            rectangle.Width = 120;
+            rectangle.Height = 40;
             speed = 2;
             health = 10;
             enemyType = 0;
@@ -22,7 +24,7 @@ namespace BulletDrizzle
         }
         public void fire()
         {
-            bulletList.Add(new enemyNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(270 * 0.0174532925)));
+            bulletList.Add(new enemyNormalBullet(position, new Vector2(rectangle.Width, rectangle.Height), bulletTexture, (float)(270 * 0.0174532925)));
             bulletCoolDown = 30;
         }
     }

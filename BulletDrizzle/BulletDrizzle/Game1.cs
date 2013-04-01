@@ -92,7 +92,8 @@ namespace BulletDrizzle
         int gruntKillScore = 100;
         int scoutKillScore = 200;
         int interceptorKillScore = 500;
-
+        int level;
+        
         int totalSecondTime = 0;
         int totalMilliTime = 0;
 
@@ -104,7 +105,7 @@ namespace BulletDrizzle
             //Graphics modifications
             graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
             graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             this.IsMouseVisible = true;
             graphics.ApplyChanges();
 
@@ -166,6 +167,8 @@ namespace BulletDrizzle
             playButton = new menuButton(playButtonTexture, screenDimensions, 45);
             quitButton = new menuButton(quitButtonTexture, screenDimensions, 80);
             returnButton = new menuButton(returnButtonTexture, screenDimensions, 60);
+
+            spawnControl.setup(gruntTexture, eNBTexture, scoutTexture, interceptorTexture);
         }
 
         /// <summary>
@@ -261,7 +264,10 @@ namespace BulletDrizzle
                 }
 
                 //Testing over: all spawns go in this section (using different countdowns)
-                if (gruntSpawnCountdown == 0)
+
+                spawnControl.spawn(level, screenDimensions, gruntList, scoutList, interceptorList);
+
+                /*if (gruntSpawnCountdown == 0)
                 {
                     Vector2 spawnPosition = new Vector2(screenDimensions.X, random.Next(0, (int)(screenDimensions.Y - gruntTexture.Height)));
                     gruntList.Add(new grunt(spawnPosition, screenDimensions, gruntTexture, eNBTexture));
@@ -280,7 +286,7 @@ namespace BulletDrizzle
                     Vector2 spawnPosition = new Vector2(screenDimensions.X, random.Next(0, (int)(screenDimensions.Y - scoutTexture.Height)));
                     scoutList.Add(new scout(spawnPosition, screenDimensions, scoutTexture, eNBTexture));
                     scoutSpawnCountdown = scoutSpawnCountdownReturn;
-                }
+                }*/
 
                 //Enemy Update
                 for (int i = 0; i < gruntList.Count; i++)
@@ -629,7 +635,12 @@ namespace BulletDrizzle
                 quitButton.Update(mouseState);
                 if (playButton.clicked)
                 {
-                    gameState = GameState.main; score = 0; this.IsMouseVisible = false; Mouse.SetPosition((int)(Player1.position.X + Player1.texture.Width / 2), (int)(Player1.position.Y + Player1.texture.Height / 2)); MediaPlayer.Play(level1);
+                    gameState = GameState.main; 
+                    score = 0; 
+                    this.IsMouseVisible = false;
+                    Mouse.SetPosition((int)(Player1.position.X + Player1.texture.Width / 2), (int)(Player1.position.Y + Player1.texture.Height / 2)); 
+                    MediaPlayer.Play(level1);
+                    level = 0;
                 }
                 if (quitButton.clicked) { this.Exit(); }
             }

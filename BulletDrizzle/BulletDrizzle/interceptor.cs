@@ -15,13 +15,17 @@ namespace BulletDrizzle
             rectangle = new Rectangle((int)(screenDimensions.X), (int)(spawnPosition.Y), texture.Width, texture.Height);
             position.X = rectangle.X;
             position.Y = rectangle.Y;
-            speed = 1;
+            speed = 4;
             health = 60;
             enemyType = 0;
             bulletTexture = inputBulletTexture;
         }
         public void fire()
         {
+            //for (int x = 1; x < 6; x++)
+            //{
+                //bulletList.Add(new enemyNormalBullet(new Vector2(position.X - (bulletTexture.Width * (float)0.5), position.Y), new Vector2(texture.Width, texture.Height), bulletTexture, (float)(0 * 0.0174532925)));
+            //}
             bulletList.Add(new enemyNormalBullet(new Vector2(position.X - (bulletTexture.Width * (float)0.5), position.Y), new Vector2(texture.Width, texture.Height), bulletTexture, (float)(0 * 0.0174532925)));
             bulletList.Add(new enemyNormalBullet(new Vector2(position.X - (bulletTexture.Width * (float)0.5), position.Y), new Vector2(texture.Width, texture.Height), bulletTexture, (float)(180 * 0.0174532925)));
             bulletList.Add(new enemyNormalBullet(new Vector2(position.X + texture.Width - (bulletTexture.Width * (float)1.5), position.Y), new Vector2(texture.Width, texture.Height), bulletTexture, (float)(0 * 0.0174532925)));

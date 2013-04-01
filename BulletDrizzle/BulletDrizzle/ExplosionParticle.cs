@@ -28,8 +28,8 @@ namespace BulletDrizzle
 
         public void Update()
         {
-            position.X += (float)(Math.Sin(direction) * velocity);
-            position.Y += (float)(Math.Cos(direction) * velocity);
+            //position.X += (float)(Math.Sin(direction) * velocity);
+            //position.Y += (float)(Math.Cos(direction) * velocity);
 
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
