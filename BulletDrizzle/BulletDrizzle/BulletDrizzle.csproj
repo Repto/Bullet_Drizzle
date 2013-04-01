@@ -134,6 +134,7 @@
     <Compile Include="player.cs" />
     <Compile Include="playerBigBullet.cs" />
     <Compile Include="playerNormalBullet.cs" />
+    <Compile Include="playerTenticle.cs" />
     <Compile Include="playerUltraBullet.cs" />
     <Compile Include="projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

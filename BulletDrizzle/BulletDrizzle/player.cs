@@ -19,7 +19,7 @@ namespace BulletDrizzle
         Texture2D superBulletTexture;
         public Vector2 position;
         Vector2 dimensions;
-        int speed = 15;
+        //int speed = 15; this is obselete now
         int countdown = 5;
         public int laserReturn = 720;
         public int laserCooldown = 0;

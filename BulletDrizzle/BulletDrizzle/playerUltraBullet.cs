@@ -19,6 +19,5 @@ namespace BulletDrizzle
             direction = inputDirection;
             damage = 5;
         }
-        //moved update to projectile should save us some code
     }
 }

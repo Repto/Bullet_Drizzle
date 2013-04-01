@@ -231,7 +231,6 @@ namespace BulletDrizzle
                 laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
                 ultraBar.Update(Player1.USreturn - Player1.USCountdown);
                 superBar.Update(Player1.superReturn - Player1.superCooldown);
-                //moved color change to Bar.cs
 
                 //Projectiles Update
                 foreach (playerNormalBullet bulletHandling in pNBlist)
@@ -416,43 +415,39 @@ namespace BulletDrizzle
                 //This next sequence will annoy you, but I wanted it working and it threw me annoying errors.
                 if (laserList.Count > 0)
                 {
-                    if (laserList[0].deathCountdown > 0)
+                    foreach (grunt gruntHandling in gruntList)
                     {
-                        foreach (grunt gruntHandling in gruntList)
+                        if (gruntHandling.rectangle.Intersects(laserList[0].rectangle))
                         {
-                            if (gruntHandling.rectangle.Intersects(laserList[0].rectangle))
-                            {
-                                gruntHandling.health -= laserList[0].damage;
-                            }
+                            gruntHandling.health -= laserList[0].damage;
                         }
+                    }
 
-                        foreach (scout scoutHandling in scoutList)
+                    foreach (scout scoutHandling in scoutList)
+                    {
+                        if (scoutHandling.rectangle.Intersects(laserList[0].rectangle))
                         {
-                            if (scoutHandling.rectangle.Intersects(laserList[0].rectangle))
-                            {
-                                scoutHandling.health -= laserList[0].damage;
-                            }
+                            scoutHandling.health -= laserList[0].damage;
                         }
+                    }
 
-                        foreach (interceptor interceptorHandling in interceptorList)
+                    foreach (interceptor interceptorHandling in interceptorList)
+                    {
+                        if (interceptorHandling.rectangle.Intersects(laserList[0].rectangle))
                         {
-                            if (interceptorHandling.rectangle.Intersects(laserList[0].rectangle))
-                            {
-                                interceptorHandling.health -= laserList[0].damage;
-                            }
+                            interceptorHandling.health -= laserList[0].damage;
                         }
                     }
                 }
-
-                //If we're not removing them in this loop, can we just use a foreach?
-                for (int i = 0; i < eNBlist.Count; i++)
+                
+                foreach (enemyNormalBullet bulletHandling in eNBlist)
                 {
-                    if (eNBlist[i].rectangle.Intersects(Player1.rectangle))
+                    if (bulletHandling.rectangle.Intersects(Player1.rectangle))
                     {
-                        eNBlist[i].deleteMark = true;
+                        bulletHandling.deleteMark = true;
                         if (!(Player1.ultraShoot))
                         {
-                            Player1.health -= eNBlist[i].damage;
+                            Player1.health -= bulletHandling.damage;
                         }
                     }
                 }
@@ -476,14 +471,14 @@ namespace BulletDrizzle
                 }
                 for (int i = 0; i < gruntList.Count; i++)
                 {
-                    if (gruntList[i].health < 0)
+                    if (gruntList[i].health < 1)
                     {
-                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
-                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
-                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].texture.Width / 2, gruntList[i].position.Y + gruntList[i].texture.Height / 2), random));
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].rectangle.Width / 2, gruntList[i].position.Y + gruntList[i].rectangle.Height / 2), random));
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].rectangle.Width / 2, gruntList[i].position.Y + gruntList[i].rectangle.Height / 2), random));
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(gruntList[i].position.X + gruntList[i].rectangle.Width / 2, gruntList[i].position.Y + gruntList[i].rectangle.Height / 2), random));
                         gruntList.RemoveAt(i);
                         i--;
-                        //explodeSound.Play();
+                        explodeSound.Play(0.2F,0,0);
                         score += gruntKillScore;
                     }
                 }
@@ -497,7 +492,7 @@ namespace BulletDrizzle
                         explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].texture.Width / 2, scoutList[i].position.Y + scoutList[i].texture.Height / 2), random));
                         scoutList.RemoveAt(i);
                         i--;
-                        //explodeSound.Play();
+                        explodeSound.Play(0.2F,0,0);
                         score += scoutKillScore;
                     }
                 }
@@ -511,7 +506,7 @@ namespace BulletDrizzle
                         explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(interceptorList[i].position.X + interceptorList[i].texture.Width / 2, interceptorList[i].position.Y + interceptorList[i].texture.Height / 2), random));
                         interceptorList.RemoveAt(i);
                         i--;
-                        //explodeSound.Play();
+                        explodeSound.Play(0.2F,0,0);
                         score += interceptorKillScore;
                     }
                 }
