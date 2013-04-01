@@ -20,3 +20,4 @@ Content\SpriteFont1.xnb
 Content\SpriteFont2.xnb
 Content\DST-2ndBallad.xnb
 Content\DST-2ndBallad.wma
+Content\playerTenticle.xnb

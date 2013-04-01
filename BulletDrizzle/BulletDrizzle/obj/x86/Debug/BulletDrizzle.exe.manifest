@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="34816">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="35840">
       <assemblyIdentity name="BulletDrizzle" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>7uXVDcC/AAoXYXnzAXdQmRhWLyE=</dsig:DigestValue>
+        <dsig:DigestValue>aTc6k7wi3AIWAlbvG4RaNjJxKPg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -228,6 +228,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>3s1u0nqirQy3i64h6tAxljhnPbA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\playerTenticle.xnb" size="1787">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>6U/5f3zvImN1jKRin379nRcRBos=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\quitbutton.xnb" size="61027">

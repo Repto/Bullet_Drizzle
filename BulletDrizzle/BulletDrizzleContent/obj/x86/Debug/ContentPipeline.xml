@@ -191,6 +191,15 @@
       <Extra>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\DST-2ndBallad.wma</Extra>
       <Time>2013-03-31T20:46:10.0176+01:00</Time>
     </Item>
+    <Item>
+      <Source>playerTenticle.png</Source>
+      <Name>playerTenticle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\playerTenticle.xnb</Output>
+      <Time>2013-04-01T20:31:42.294+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

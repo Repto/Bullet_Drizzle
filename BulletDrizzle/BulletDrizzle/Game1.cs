@@ -47,6 +47,9 @@ namespace BulletDrizzle
         Texture2D quitButtonTexture;
         Texture2D returnButtonTexture;
         player Player1;
+        playerTenticle playerTenticle1;
+        playerTenticle playerTenticle2;
+        playerTenticle playerTenticle3;
         Bar healthBar;
         Bar laserBar;
         Bar ultraBar;
@@ -67,6 +70,7 @@ namespace BulletDrizzle
         Texture2D eNBTexture;
         Texture2D UBTexture;
         Texture2D laserTexture;
+        Texture2D tenticleTexture;
 
         //Different explosion textures, for now just one
         Texture2D explosionTextureOne;
@@ -154,6 +158,10 @@ namespace BulletDrizzle
             gameOverTexture = Content.Load<Texture2D>("gameoverscreen");
             playButtonTexture = Content.Load<Texture2D>("playbutton");
             quitButtonTexture = Content.Load<Texture2D>("quitbutton");
+            tenticleTexture = Content.Load<Texture2D>("playerTenticle");
+            playerTenticle1 = new playerTenticle(tenticleTexture, 165);
+            playerTenticle2 = new playerTenticle(tenticleTexture, 180);
+            playerTenticle3 = new playerTenticle(tenticleTexture, 195);
 
             level1 = Content.Load<Song>("DST-2ndBallad");
             returnButtonTexture = Content.Load<Texture2D>("returnbutton");
@@ -200,6 +208,9 @@ namespace BulletDrizzle
                 playButton.clicked = false;
                 playButton.preclicked = false;
                 Player1.health = Player1.startingHealth;
+                playerTenticle1 = new playerTenticle(tenticleTexture, 100);
+                playerTenticle2 = new playerTenticle(tenticleTexture, 130);
+                playerTenticle3 = new playerTenticle(tenticleTexture, 160);
                 this.IsMouseVisible = true;
                 pNBlist.Clear();
                 pUBlist.Clear();
@@ -214,6 +225,9 @@ namespace BulletDrizzle
                 MediaPlayer.Stop();
                 superBulletList.Clear();
                 Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
+                playerTenticle1 = new playerTenticle(tenticleTexture, 100);
+                playerTenticle2 = new playerTenticle(tenticleTexture, 130);
+                playerTenticle3 = new playerTenticle(tenticleTexture, 160);
                 healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
                 healthBar.barColor = Color.Green;
             }
@@ -227,6 +241,9 @@ namespace BulletDrizzle
 
                 //Single Instance Updates
                 Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList, pUBlist, superBulletList);
+                playerTenticle1.Update(keyState, Player1.position, Player1.rectangle);
+                playerTenticle2.Update(keyState, Player1.position, Player1.rectangle);
+                playerTenticle3.Update(keyState, Player1.position, Player1.rectangle);
                 healthBar.Update(Player1.health);
                 laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
                 ultraBar.Update(Player1.USreturn - Player1.USCountdown);
@@ -617,9 +634,13 @@ namespace BulletDrizzle
                     MediaPlayer.Stop();
                     superBulletList.Clear();
                     Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
+                    playerTenticle1 = new playerTenticle(tenticleTexture, 100);
+                    playerTenticle2 = new playerTenticle(tenticleTexture, 130);
+                    playerTenticle3 = new playerTenticle(tenticleTexture, 160);
                     healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
                     healthBar.barColor = Color.Green;
                     WaitLetGo = false;
+                    Console.WriteLine("created");
                 }
 
             }
@@ -709,6 +730,9 @@ namespace BulletDrizzle
 
                 //Single Instance Draws
                 Player1.draw(spriteBatch);
+                playerTenticle1.Draw(spriteBatch);
+                playerTenticle2.Draw(spriteBatch);
+                playerTenticle3.Draw(spriteBatch);
                 healthBar.Draw(spriteBatch);
                 laserBar.Draw(spriteBatch);
                 ultraBar.Draw(spriteBatch);
