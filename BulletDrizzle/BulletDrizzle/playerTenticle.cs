@@ -28,7 +28,7 @@ namespace BulletDrizzle
             sourceRectangle = rectangle;
             origin = new Vector2(0, rectangle.Height / 2);
         }
-        public void Update(KeyboardState keyboard, Vector2 playerPosition, Rectangle playerRectangle, bool UShoot)
+        public void Update(KeyboardState keyboard, Vector2 playerPosition, Rectangle playerRectangle, bool UShoot, int laserCooldown)
         {
             position.X = playerPosition.X + playerRectangle.Width / 8;
             position.Y = playerPosition.Y + playerRectangle.Height / 2 - rectangle.Height;
@@ -36,7 +36,7 @@ namespace BulletDrizzle
             {
                 direction += 12;
             }
-            else if (keyboard.IsKeyDown(Keys.D))
+            else if (keyboard.IsKeyDown(Keys.D) && laserCooldown == 0)
             {
                 forwards = true;
             }
