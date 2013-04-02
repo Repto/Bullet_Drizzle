@@ -159,9 +159,9 @@ namespace BulletDrizzle
             playButtonTexture = Content.Load<Texture2D>("playbutton");
             quitButtonTexture = Content.Load<Texture2D>("quitbutton");
             tenticleTexture = Content.Load<Texture2D>("playerTenticle");
-            playerTenticle1 = new playerTenticle(tenticleTexture, 165);
-            playerTenticle2 = new playerTenticle(tenticleTexture, 180);
-            playerTenticle3 = new playerTenticle(tenticleTexture, 195);
+            playerTenticle1 = new playerTenticle(tenticleTexture, 100);
+            playerTenticle2 = new playerTenticle(tenticleTexture, 130);
+            playerTenticle3 = new playerTenticle(tenticleTexture, 160);
 
             level1 = Content.Load<Song>("DST-2ndBallad");
             returnButtonTexture = Content.Load<Texture2D>("returnbutton");
@@ -204,32 +204,8 @@ namespace BulletDrizzle
             //for testing purposes
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                gameState = GameState.menu; 
-                playButton.clicked = false;
-                playButton.preclicked = false;
-                Player1.health = Player1.startingHealth;
-                playerTenticle1 = new playerTenticle(tenticleTexture, 100);
-                playerTenticle2 = new playerTenticle(tenticleTexture, 130);
-                playerTenticle3 = new playerTenticle(tenticleTexture, 160);
-                this.IsMouseVisible = true;
-                pNBlist.Clear();
-                pUBlist.Clear();
-                eNBlist.Clear();
-                scoutList.Clear();
-                gruntList.Clear();
-                laserList.Clear();
-                interceptorList.Clear();
-                explosionsList.Clear();
-                totalSecondTime = 0;
-                totalMilliTime = 0;
-                MediaPlayer.Stop();
-                superBulletList.Clear();
-                Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
-                playerTenticle1 = new playerTenticle(tenticleTexture, 100);
-                playerTenticle2 = new playerTenticle(tenticleTexture, 130);
-                playerTenticle3 = new playerTenticle(tenticleTexture, 160);
-                healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
-                healthBar.barColor = Color.Green;
+                gameReset();
+                gameState = GameState.menu;
             }
 
             //Information gathering here
@@ -615,32 +591,9 @@ namespace BulletDrizzle
                 if (interceptorSpawnCountdown > 0) interceptorSpawnCountdown--;
 
                 if (Player1.health < 1) 
-                { 
+                {
+                    gameReset();
                     gameState = GameState.gameOver;
-                    playButton.clicked = false;
-                    playButton.preclicked = false;
-                    Player1.health = Player1.startingHealth; 
-                    this.IsMouseVisible = true;
-                    pNBlist.Clear();
-                    pUBlist.Clear();
-                    eNBlist.Clear();
-                    explosionsList.Clear();
-                    interceptorList.Clear();
-                    scoutList.Clear();
-                    gruntList.Clear();
-                    laserList.Clear();
-                    totalSecondTime = 0;
-                    totalMilliTime = 0;
-                    MediaPlayer.Stop();
-                    superBulletList.Clear();
-                    Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
-                    playerTenticle1 = new playerTenticle(tenticleTexture, 100);
-                    playerTenticle2 = new playerTenticle(tenticleTexture, 130);
-                    playerTenticle3 = new playerTenticle(tenticleTexture, 160);
-                    healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
-                    healthBar.barColor = Color.Green;
-                    WaitLetGo = false;
-                    Console.WriteLine("created");
                 }
 
             }
@@ -729,10 +682,10 @@ namespace BulletDrizzle
                 }
 
                 //Single Instance Draws
-                Player1.draw(spriteBatch);
                 playerTenticle1.Draw(spriteBatch);
                 playerTenticle2.Draw(spriteBatch);
                 playerTenticle3.Draw(spriteBatch);
+                Player1.draw(spriteBatch);
                 healthBar.Draw(spriteBatch);
                 laserBar.Draw(spriteBatch);
                 ultraBar.Draw(spriteBatch);
@@ -775,6 +728,33 @@ namespace BulletDrizzle
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void gameReset()
+        {
+            playButton.clicked = false;
+            playButton.preclicked = false;
+            Player1.health = Player1.startingHealth;
+            this.IsMouseVisible = true;
+            pNBlist.Clear();
+            pUBlist.Clear();
+            eNBlist.Clear();
+            explosionsList.Clear();
+            interceptorList.Clear();
+            scoutList.Clear();
+            gruntList.Clear();
+            laserList.Clear();
+            totalSecondTime = 0;
+            totalMilliTime = 0;
+            MediaPlayer.Stop();
+            superBulletList.Clear();
+            Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
+            playerTenticle1 = new playerTenticle(tenticleTexture, 100);
+            playerTenticle2 = new playerTenticle(tenticleTexture, 130);
+            playerTenticle3 = new playerTenticle(tenticleTexture, 160);
+            healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
+            healthBar.barColor = Color.Green;
+            WaitLetGo = false;
         }
     }
 }

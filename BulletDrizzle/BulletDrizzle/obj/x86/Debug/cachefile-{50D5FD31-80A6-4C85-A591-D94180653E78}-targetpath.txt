@@ -1,6 +1,5 @@
 Content\spaceship.xnb
 Content\bullet.xnb
-Content\enemyGrunt.xnb
 Content\white.xnb
 Content\explosion.xnb
 Content\laser.xnb
@@ -14,10 +13,11 @@ Content\bigbullet.xnb
 Content\gameoverscreen.xnb
 Content\returnbutton.xnb
 Content\enemyInterceptor.xnb
+Content\enemyGrunt.xnb
+Content\playerTenticle.xnb
 Content\Explosion, explode.xnb
 Content\Single machinegun shot.xnb
 Content\SpriteFont1.xnb
 Content\SpriteFont2.xnb
 Content\DST-2ndBallad.xnb
 Content\DST-2ndBallad.wma
-Content\playerTenticle.xnb
