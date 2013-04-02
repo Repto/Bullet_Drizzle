@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="35840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="36352">
       <assemblyIdentity name="BulletDrizzle" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>aTc6k7wi3AIWAlbvG4RaNjJxKPg=</dsig:DigestValue>
+        <dsig:DigestValue>iDIhyC27kNp/OI1c09F1cL3TNd8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -128,7 +128,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>mpqLbBmdLPhClnkxPYeU6x54Uvo=</dsig:DigestValue>
+      <dsig:DigestValue>h32x4YrxVDpEMKmB++IQQu+u4jM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\DST-2ndBallad.xnb" size="131">

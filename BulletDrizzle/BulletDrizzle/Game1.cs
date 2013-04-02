@@ -241,9 +241,9 @@ namespace BulletDrizzle
 
                 //Single Instance Updates
                 Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList, pUBlist, superBulletList);
-                playerTenticle1.Update(keyState, Player1.position, Player1.rectangle);
-                playerTenticle2.Update(keyState, Player1.position, Player1.rectangle);
-                playerTenticle3.Update(keyState, Player1.position, Player1.rectangle);
+                playerTenticle1.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot);
+                playerTenticle2.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot);
+                playerTenticle3.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot);
                 healthBar.Update(Player1.health);
                 laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
                 ultraBar.Update(Player1.USreturn - Player1.USCountdown);
