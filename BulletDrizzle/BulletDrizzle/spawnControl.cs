@@ -13,7 +13,7 @@ namespace BulletDrizzle
         static Texture2D eNBTexture;
         static Texture2D scoutTexture;
         static Texture2D interceptorTexture;
-        static string[] levelSpawns = {"abcabc53425143554a532a412a000bcbcbcbcbcbc","abcabc"};
+        static string[] levelSpawns = {"123a412a000abcdeeedcba112233445566e66e66e66e000000000","abcabc"};
         static int characterNo = 0;
         static int coolDown = 60;
         
@@ -58,7 +58,7 @@ namespace BulletDrizzle
                             gruntList.Add(new grunt(spawnPosition, screenDimensions, gruntTexture, eNBTexture));
                         }
                         break;
-                    case '4': //four grunts
+                    case '4': //six grunts
                         noEnemies = 6;
                         for (int i = 1; i < noEnemies; i++)
                         {
@@ -66,8 +66,16 @@ namespace BulletDrizzle
                             gruntList.Add(new grunt(spawnPosition, screenDimensions, gruntTexture, eNBTexture));
                         }
                         break;
-                    case '5': //four grunts
+                    case '5': //eight grunts
                         noEnemies = 8;
+                        for (int i = 1; i < noEnemies; i++)
+                        {
+                            Vector2 spawnPosition = new Vector2(screenDimensions.X, screenDimensions.Y / noEnemies * i);
+                            gruntList.Add(new grunt(spawnPosition, screenDimensions, gruntTexture, eNBTexture));
+                        }
+                        break;
+                    case '6': //twelve grunts
+                        noEnemies = 12;
                         for (int i = 1; i < noEnemies; i++)
                         {
                             Vector2 spawnPosition = new Vector2(screenDimensions.X, screenDimensions.Y / noEnemies * i);
@@ -90,6 +98,22 @@ namespace BulletDrizzle
                         break;
                     case 'c': //6 scouts                        
                         noEnemies = 6;
+                        for (int i = 1; i < noEnemies; i++)
+                        {
+                            Vector2 spawnPosition = new Vector2(screenDimensions.X, screenDimensions.Y / noEnemies * i);
+                            scoutList.Add(new scout(spawnPosition, screenDimensions, scoutTexture, eNBTexture));
+                        }
+                        break;
+                    case 'd': // 8 scouts
+                        noEnemies = 8;
+                        for (int i = 1; i < noEnemies; i++)
+                        {
+                            Vector2 spawnPosition = new Vector2(screenDimensions.X, screenDimensions.Y / noEnemies * i);
+                            scoutList.Add(new scout(spawnPosition, screenDimensions, scoutTexture, eNBTexture));
+                        }
+                        break;
+                    case 'e': // 12 scouts
+                        noEnemies = 12;
                         for (int i = 1; i < noEnemies; i++)
                         {
                             Vector2 spawnPosition = new Vector2(screenDimensions.X, screenDimensions.Y / noEnemies * i);
