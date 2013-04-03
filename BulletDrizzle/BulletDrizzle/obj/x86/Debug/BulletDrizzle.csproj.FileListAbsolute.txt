@@ -128,7 +128,6 @@ C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizz
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\white.xnb
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\explosion.xnb
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\laser.xnb
-C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyScout.xnb
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\ultrabullet.xnb
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\menuscreen.xnb
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\playbutton.xnb
@@ -156,3 +155,4 @@ C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizz
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\obj\x86\Debug\BulletDrizzle.pdb
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\playerTenticle.xnb
 C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\playerTenticle.xnb
+C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyScout.xnb

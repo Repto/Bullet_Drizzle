@@ -91,13 +91,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="enemyScout.png">
-      <Name>enemyScout</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="ultrabullet.png">
       <Name>ultrabullet</Name>
       <Importer>TextureImporter</Importer>
@@ -192,6 +185,13 @@
   <ItemGroup>
     <Compile Include="playerTenticle.png">
       <Name>playerTenticle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="enemyScout.png">
+      <Name>enemyScout</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

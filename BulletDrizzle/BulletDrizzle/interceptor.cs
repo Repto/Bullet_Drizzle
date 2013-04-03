@@ -18,7 +18,6 @@ namespace BulletDrizzle
             speed = 2;
             startingHealth = 60;
             health = 60;
-            enemyType = 0;
             bulletTexture = inputBulletTexture;
         }
         public void fire()

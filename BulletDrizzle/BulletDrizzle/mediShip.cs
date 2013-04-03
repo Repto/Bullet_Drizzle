@@ -31,7 +31,6 @@ namespace BulletDrizzle
             rectangle.Height = texture.Height;
             speed = 2;
             health = 50;
-            enemyType = 0;
         }
         public void Heal()
         {

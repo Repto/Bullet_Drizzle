@@ -13,7 +13,7 @@ namespace BulletDrizzle
         static Texture2D eNBTexture;
         static Texture2D scoutTexture;
         static Texture2D interceptorTexture;
-        static string[] levelSpawns = {"123a412a000abcdeeedcba112233445566e66e66e66e000000000","abcabc"};
+        static string[] levelSpawns = {"1234ab5cd3a234b64cd2abcda4bcd365abcdabc1243dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
         public static int characterNo = 0;
         static int coolDown = 60;
         

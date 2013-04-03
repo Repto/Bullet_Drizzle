@@ -36,7 +36,7 @@ namespace BulletDrizzle
         public void Update(KeyboardState keyboard, Vector2 playerPosition, Rectangle playerRectangle, bool UShoot, int laserCooldown, int superCooldown)
         {
             position.X = playerPosition.X + playerRectangle.Width / 8;
-            position.Y = playerPosition.Y + playerRectangle.Height / 2 - rectangle.Height;////
+            position.Y = playerPosition.Y + playerRectangle.Height / 2 - rectangle.Height;
             if (UShoot)
             {
                 direction += 12;

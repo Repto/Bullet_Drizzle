@@ -17,10 +17,9 @@ namespace BulletDrizzle
             position.Y = rectangle.Y;
             rectangle.Width = 120;
             rectangle.Height = 40;
-            speed = 4;
-            startingHealth = 10;
-            health = 10;
-            enemyType = 0;
+            speed = 5;
+            startingHealth = 16;
+            health = startingHealth;
             bulletTexture = inputBulletTexture;
         }
         public void fire()

@@ -3,7 +3,6 @@ Content\bullet.xnb
 Content\white.xnb
 Content\explosion.xnb
 Content\laser.xnb
-Content\enemyScout.xnb
 Content\ultrabullet.xnb
 Content\menuscreen.xnb
 Content\playbutton.xnb
@@ -20,4 +19,5 @@ Content\Single machinegun shot.xnb
 Content\SpriteFont1.xnb
 Content\SpriteFont2.xnb
 Content\DST-2ndBallad.xnb
+Content\enemyScout.xnb
 Content\DST-2ndBallad.wma

@@ -16,7 +16,6 @@ namespace BulletDrizzle
         public Texture2D bulletTexture;
         protected int speed;
         public Rectangle rectangle;
-        public int enemyType;
         protected List<enemyNormalBullet> bulletList;
         public int bulletCoolDown;
 

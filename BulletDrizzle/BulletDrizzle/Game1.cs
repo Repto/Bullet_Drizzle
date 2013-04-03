@@ -101,7 +101,7 @@ namespace BulletDrizzle
             //Graphics modifications
             graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
             graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             this.IsMouseVisible = true;
             graphics.ApplyChanges();
 
