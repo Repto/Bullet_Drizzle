@@ -14,7 +14,7 @@ namespace BulletDrizzle
         static Texture2D scoutTexture;
         static Texture2D interceptorTexture;
         static string[] levelSpawns = {"123a412a000abcdeeedcba112233445566e66e66e66e000000000","abcabc"};
-        static int characterNo = 0;
+        public static int characterNo = 0;
         static int coolDown = 60;
         
         static public void setup(Texture2D inputGruntTexture, Texture2D inputENBtexture, Texture2D inputScoutTexture, Texture2D inputInterceptorTexture)
@@ -28,8 +28,6 @@ namespace BulletDrizzle
         {
             if (coolDown == 0)
             {
-                Console.WriteLine(level);
-                Console.WriteLine(characterNo);
                 switch (levelSpawns[level][characterNo])
                 {
                     case '0': //no spawn

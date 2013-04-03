@@ -749,6 +749,8 @@ namespace BulletDrizzle
             healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
             healthBar.barColor = Color.Green;
             WaitLetGo = false;
+            spawnControl.characterNo = 0;
+            level = 0;
         }
     }
 }
