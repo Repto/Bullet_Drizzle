@@ -42,7 +42,6 @@ namespace BulletDrizzle
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, rectangle, new Color(255 - colourDecrease, 255- colourDecrease, 255 - colourDecrease));
-            Console.WriteLine(colourDecrease);
         }
     }
 }

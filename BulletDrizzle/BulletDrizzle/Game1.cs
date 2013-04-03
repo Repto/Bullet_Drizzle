@@ -20,8 +20,8 @@ namespace BulletDrizzle
         SpriteBatch spriteBatch;
 
         //Screendimensions and related info here:
-        Vector2 screenDimensions = new Vector2(1366, 768);
-        //Vector2 screenDimensions = new Vector2(800, 600);
+        //Vector2 screenDimensions = new Vector2(1366, 768);
+        Vector2 screenDimensions = new Vector2(800, 600);
 
         //Lists of Different Projectiles. Their speeds are in their separate classes.
         List<playerNormalBullet> pNBlist = new List<playerNormalBullet>();

@@ -13,7 +13,7 @@ namespace BulletDrizzle
         static Texture2D eNBTexture;
         static Texture2D scoutTexture;
         static Texture2D interceptorTexture;
-        static string[] levelSpawns = {"12345aa123451a23451234a512a345543a214545aa45a12a34a532a412a","10101"};
+        static string[] levelSpawns = {"123454a532a412a","abcabc"};
         static int characterNo = 0;
         static int coolDown = 60;
         
@@ -28,6 +28,8 @@ namespace BulletDrizzle
         {
             if (coolDown == 0)
             {
+                Console.WriteLine(level);
+                Console.WriteLine(characterNo);
                 switch (levelSpawns[level][characterNo])
                 {
                     case '0': //no spawn
@@ -78,9 +80,34 @@ namespace BulletDrizzle
                         spawnPosition2 = new Vector2(screenDimensions.X, screenDimensions.Y / 3 * 2);
                         scoutList.Add(new scout(spawnPosition2, screenDimensions, scoutTexture, eNBTexture));
                         break;
+                    case 'b': //4 scouts                        
+                        noEnemies = 4;
+                        for (int i = 1; i < noEnemies; i++)
+                        {
+                            Vector2 spawnPosition = new Vector2(screenDimensions.X, screenDimensions.Y / noEnemies * i);
+                            scoutList.Add(new scout(spawnPosition, screenDimensions, scoutTexture, eNBTexture));
+                        }
+                        break;
+                    case 'c': //6 scouts                        
+                        noEnemies = 6;
+                        for (int i = 1; i < noEnemies; i++)
+                        {
+                            Vector2 spawnPosition = new Vector2(screenDimensions.X, screenDimensions.Y / noEnemies * i);
+                            scoutList.Add(new scout(spawnPosition, screenDimensions, scoutTexture, eNBTexture));
+                        }
+                        break;
                 }
                 characterNo++;
                 coolDown = 60;
+                if (characterNo > levelSpawns[level].Length)
+                {
+                    characterNo = 0;
+                    level++;
+                }
+                if (level > levelSpawns.Length)
+                {
+                    return;
+                }
             }
             coolDown--;
         }
