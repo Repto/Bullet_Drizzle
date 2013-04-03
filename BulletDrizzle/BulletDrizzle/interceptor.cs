@@ -15,7 +15,7 @@ namespace BulletDrizzle
             rectangle = new Rectangle((int)(screenDimensions.X), (int)(spawnPosition.Y), texture.Width, texture.Height);
             position.X = rectangle.X;
             position.Y = rectangle.Y;
-            speed = 4;
+            speed = 2;
             startingHealth = 60;
             health = 60;
             enemyType = 0;
