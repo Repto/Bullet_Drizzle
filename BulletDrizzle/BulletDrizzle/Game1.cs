@@ -20,8 +20,8 @@ namespace BulletDrizzle
         SpriteBatch spriteBatch;
 
         //Screendimensions and related info here:
-        //Vector2 screenDimensions = new Vector2(1366, 768);
-        Vector2 screenDimensions = new Vector2(800, 600);
+        Vector2 screenDimensions = new Vector2(1366, 768);
+        //Vector2 screenDimensions = new Vector2(800, 600);
 
         //Lists of Different Projectiles. Their speeds are in their separate classes.
         List<playerNormalBullet> pNBlist = new List<playerNormalBullet>();
@@ -83,14 +83,6 @@ namespace BulletDrizzle
         enum GameState { menu, main, options, gameOver };
         GameState gameState = GameState.menu;
 
-        //Countdowns go here
-        const int gruntSpawnCountdownReturn = 23;
-        int gruntSpawnCountdown = gruntSpawnCountdownReturn;
-        const int scoutSpawnCountdownReturn = 45;
-        int scoutSpawnCountdown = scoutSpawnCountdownReturn;
-        const int interceptorSpawnCountdownReturn = 180;
-        int interceptorSpawnCountdown = interceptorSpawnCountdownReturn;
-
         //Score variables here
         int score = 0;
         int gruntKillScore = 100;
@@ -109,7 +101,7 @@ namespace BulletDrizzle
             //Graphics modifications
             graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
             graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             this.IsMouseVisible = true;
             graphics.ApplyChanges();
 
@@ -587,10 +579,6 @@ namespace BulletDrizzle
                 totalMilliTime += gameTime.ElapsedGameTime.Milliseconds;
                 totalSecondTime = (int)((float)totalMilliTime / 1000);
 
-                //Countdown updates
-                if (gruntSpawnCountdown > 0) gruntSpawnCountdown--;
-                if (scoutSpawnCountdown > 0) scoutSpawnCountdown--;
-                if (interceptorSpawnCountdown > 0) interceptorSpawnCountdown--;
 
                 if (Player1.health < 1) 
                 {
