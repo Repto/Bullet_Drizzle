@@ -218,9 +218,9 @@ namespace BulletDrizzle
                 //Single Instance Updates
 
                 //Update before player because they want to use the lasercooldown in conjunction with the d-key, and the player would affect that.
-                playerTenticle1.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot, Player1.laserCooldown);
-                playerTenticle2.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot, Player1.laserCooldown);
-                playerTenticle3.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot, Player1.laserCooldown);
+                playerTenticle1.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot, Player1.laserCooldown, Player1.superCooldown);
+                playerTenticle2.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot, Player1.laserCooldown, Player1.superCooldown);
+                playerTenticle3.Update(keyState, Player1.position, Player1.rectangle, Player1.ultraShoot, Player1.laserCooldown, Player1.superCooldown);
                 Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList, pUBlist, superBulletList);
                 healthBar.Update(Player1.health);
                 laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
