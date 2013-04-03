@@ -18,6 +18,7 @@ namespace BulletDrizzle
             rectangle.Width = 120;
             rectangle.Height = 40;
             speed = 2;
+            startingHealth = 10;
             health = 10;
             enemyType = 0;
             bulletTexture = inputBulletTexture;

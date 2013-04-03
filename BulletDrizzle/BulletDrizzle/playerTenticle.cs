@@ -85,8 +85,8 @@ namespace BulletDrizzle
                         direction = restDirection;
                     }
                 }
-                else if (UShoot) { }
-                else { direction = restDirection; }
+           else if (UShoot) { }
+           else { direction = restDirection; }
         }
         public void Draw(SpriteBatch spriteBatch)
         {

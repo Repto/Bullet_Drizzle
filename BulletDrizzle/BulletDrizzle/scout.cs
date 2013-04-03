@@ -16,6 +16,7 @@ namespace BulletDrizzle
             position.X = rectangle.X;
             position.Y = rectangle.Y;
             speed = 5;
+            startingHealth = 2;
             health = 2;
             enemyType = 0;
             bulletTexture = inputBulletTexture;
