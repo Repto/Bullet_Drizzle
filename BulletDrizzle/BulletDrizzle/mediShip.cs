@@ -13,6 +13,7 @@ namespace BulletDrizzle
         //This next one is hilarious
         List<List<enemy>> ListOfEnemyLists = new List<List<enemy>>();
         List<enemy> alreadyHealing;
+        List<enemy> impossible;
         Random randomGenerator = new Random();
         int maxHealsAtOneTime = 3;
         int healRange = 20;
@@ -38,13 +39,16 @@ namespace BulletDrizzle
            //Can't heal scouts, as they die after one hit, so healing them would not make them any sturdier (they'd die before being healed).
            for (int i = 0; i < maxHealsAtOneTime; i++)
            {
-               if (isHealAble(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing)))
+               if (isHealAble(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing, impossible)))
                {
-                   addHealth(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing));
+                   addHealth(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing, impossible));
+                   alreadyHealing.Add(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing, impossible));
                }
                else { i--;} 
-               alreadyHealing.Add(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing)); 
+               impossible.Add(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing, impossible));
+               if (ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)].Count == 0) { return; }
            }
+           
         }
 
         //Pythagoras etc. distance working out (having medi-ship heal closest enemy is easiest)
@@ -71,13 +75,13 @@ namespace BulletDrizzle
         }
 
         //Guts of the function: finds the enemy closest to the medship within a certain list that is not already being healed.
-        public enemy closestEnemyInList(List<enemy> enemyList, List<enemy> alreadyHealing)
+        public enemy closestEnemyInList(List<enemy> enemyList, List<enemy> alreadyHealing, List<enemy> impossibleList)
         {
             temporaryClosestEnemy = enemyList[0];
             temporarySmallestDistance = workOutDistance(this.position, enemyList[0].position);
             foreach (enemy enemyHandling in enemyList)
             {
-                if (!(alreadyHealing.Contains(enemyHandling)))
+                if (!(alreadyHealing.Contains(enemyHandling) || impossibleList.Contains(enemyHandling)))
                 {
                     if (workOutDistance(this.position, enemyHandling.position) < temporarySmallestDistance)
                     {
@@ -90,4 +94,3 @@ namespace BulletDrizzle
         }
     }
 }
-

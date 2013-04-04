@@ -35,10 +35,12 @@ namespace BulletDrizzle
         List<scout> scoutList = new List<scout>();
         List<interceptor> interceptorList = new List<interceptor>();
 
-        //Explosion List
+        //Effects List
         List<ExplosionParticle> explosionsList = new List<ExplosionParticle>();
+        List<playerTenticle> playerTentacles = new List<playerTenticle>();
 
         //Single instances go here.
+        Texture2D playerTexture;
         SpriteFont font;
         SpriteFont bigFont;
         Texture2D menuTexture;
@@ -47,9 +49,6 @@ namespace BulletDrizzle
         Texture2D quitButtonTexture;
         Texture2D returnButtonTexture;
         player Player1;
-        playerTenticle playerTenticle1;
-        playerTenticle playerTenticle2;
-        playerTenticle playerTenticle3;
         Bar healthBar;
         Bar laserBar;
         Bar ultraBar;
@@ -71,6 +70,7 @@ namespace BulletDrizzle
         Texture2D UBTexture;
         Texture2D laserTexture;
         Texture2D tenticleTexture;
+        Texture2D pNBTexture;
 
         //Different explosion textures, for now just one
         Texture2D explosionTextureOne;
@@ -132,28 +132,22 @@ namespace BulletDrizzle
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            playerTexture = Content.Load<Texture2D>("spaceship");
+            tenticleTexture = Content.Load<Texture2D>("playerTenticle");
             laserTexture = Content.Load<Texture2D>("laser");
             BBTexture = Content.Load<Texture2D>("bigbullet");
             UBTexture = Content.Load<Texture2D>("ultrabullet");
-            Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
+            pNBTexture = Content.Load<Texture2D>("bullet");
             gruntTexture = Content.Load<Texture2D>("enemyGrunt");
             scoutTexture = Content.Load<Texture2D>("enemyScout");
             interceptorTexture = Content.Load<Texture2D>("enemyInterceptor");
             eNBTexture = Content.Load<Texture2D>("ememybullet"); //for moment using normal bullet tex for enemy bullet tex, dunno if we'll change this
-            healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
-            laserBar = new Bar(Content.Load<Texture2D>("white"), 20, 50, 20, 250, Player1.laserReturn, Color.Red, false);
-            ultraBar = new Bar(Content.Load<Texture2D>("white"), 20, 80, 20, 250, Player1.USreturn, Color.Purple, false);
-            superBar = new Bar(Content.Load<Texture2D>("white"), 20, 110, 20, 250, Player1.superReturn, Color.Yellow, false);
-            healthBar.barColor = Color.Green;
             explosionTextureOne = Content.Load<Texture2D>("explosion");
             menuTexture = Content.Load<Texture2D>("menuscreen");
             gameOverTexture = Content.Load<Texture2D>("gameoverscreen");
             playButtonTexture = Content.Load<Texture2D>("playbutton");
             quitButtonTexture = Content.Load<Texture2D>("quitbutton");
-            tenticleTexture = Content.Load<Texture2D>("playerTenticle");
-            playerTenticle1 = new playerTenticle(tenticleTexture, 100);
-            playerTenticle2 = new playerTenticle(tenticleTexture, 130);
-            playerTenticle3 = new playerTenticle(tenticleTexture, 160);
+            
 
             level1 = Content.Load<Song>("DST-2ndBallad");
             returnButtonTexture = Content.Load<Texture2D>("returnbutton");
@@ -168,7 +162,7 @@ namespace BulletDrizzle
             quitButton = new menuButton(quitButtonTexture, screenDimensions, 80);
             returnButton = new menuButton(returnButtonTexture, screenDimensions, 60);
 
-            spawnControl.setup(gruntTexture, eNBTexture, scoutTexture, interceptorTexture);
+            gameReset();
         }
 
         /// <summary>
@@ -210,14 +204,7 @@ namespace BulletDrizzle
                 //Single Instance Updates
 
                 //Update before player because they want to use the lasercooldown in conjunction with the d-key, and the player would affect that.
-                //Compromise Section!
-                int oldLaser = Player1.laserCooldown;
-                bool oldUltra = Player1.ultraShoot;
-                int oldSuper = Player1.superCooldown;
                 Player1.Update(mouseState, screenDimensions, pNBlist, gunShot, keyState, laserList, pUBlist, superBulletList);
-                playerTenticle1.Update(keyState, Player1.position, Player1.rectangle, oldUltra, oldLaser, oldSuper);
-                playerTenticle2.Update(keyState, Player1.position, Player1.rectangle, oldUltra, oldLaser, oldSuper);
-                playerTenticle3.Update(keyState, Player1.position, Player1.rectangle, oldUltra, oldLaser, oldSuper);
                 healthBar.Update(Player1.health);
                 laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
                 ultraBar.Update(Player1.USreturn - Player1.USCountdown);
@@ -478,9 +465,9 @@ namespace BulletDrizzle
                 {
                     if (scoutList[i].health < 0)
                     {
-                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].texture.Width / 2, scoutList[i].position.Y + scoutList[i].texture.Height / 2), random));
-                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].texture.Width / 2, scoutList[i].position.Y + scoutList[i].texture.Height / 2), random));
-                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].texture.Width / 2, scoutList[i].position.Y + scoutList[i].texture.Height / 2), random));
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].rectangle.Width / 2, scoutList[i].position.Y + scoutList[i].rectangle.Height / 2), random));
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].rectangle.Width / 2, scoutList[i].position.Y + scoutList[i].rectangle.Height / 2), random));
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(scoutList[i].position.X + scoutList[i].rectangle.Width / 2, scoutList[i].position.Y + scoutList[i].rectangle.Height / 2), random));
                         scoutList.RemoveAt(i);
                         i--;
                         explodeSound.Play(0.2F,0,0);
@@ -675,10 +662,13 @@ namespace BulletDrizzle
                     interceptorHandling.Draw(spriteBatch);
                 }
 
+                //Draw Tentacles and other graphical effects
+                foreach (playerTenticle tentacleHandling in playerTentacles)
+                {
+                    tentacleHandling.Draw(spriteBatch);
+                }
+
                 //Single Instance Draws
-                playerTenticle1.Draw(spriteBatch);
-                playerTenticle2.Draw(spriteBatch);
-                playerTenticle3.Draw(spriteBatch);
                 Player1.draw(spriteBatch);
                 healthBar.Draw(spriteBatch);
                 laserBar.Draw(spriteBatch);
@@ -693,7 +683,7 @@ namespace BulletDrizzle
                     }
                 }
 
-                //Draw explosions, at high level but slightly transparent.
+                //Draw effects
                 foreach (ExplosionParticle EPHandling in explosionsList)
                 {
                     EPHandling.Draw(spriteBatch);
@@ -728,7 +718,6 @@ namespace BulletDrizzle
         {
             playButton.clicked = false;
             playButton.preclicked = false;
-            Player1.health = Player1.startingHealth;
             this.IsMouseVisible = true;
             pNBlist.Clear();
             pUBlist.Clear();
@@ -742,13 +731,18 @@ namespace BulletDrizzle
             totalMilliTime = 0;
             MediaPlayer.Stop();
             superBulletList.Clear();
-            Player1 = new player(Content.Load<Texture2D>("spaceship"), screenDimensions, Content.Load<Texture2D>("bullet"), laserTexture, UBTexture, BBTexture);
-            playerTenticle1 = new playerTenticle(tenticleTexture, 100);
-            playerTenticle2 = new playerTenticle(tenticleTexture, 130);
-            playerTenticle3 = new playerTenticle(tenticleTexture, 160);
+            playerTentacles.Clear();
+            playerTentacles.Add(new playerTenticle(tenticleTexture, 100));
+            playerTentacles.Add(new playerTenticle(tenticleTexture, 130));
+            playerTentacles.Add(new playerTenticle(tenticleTexture, 160));
+            Player1 = new player(playerTexture, screenDimensions, pNBTexture, laserTexture, UBTexture, BBTexture, playerTentacles);
             healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
+            laserBar = new Bar(Content.Load<Texture2D>("white"), 20, 50, 20, 250, Player1.laserReturn, Color.Red, false);
+            ultraBar = new Bar(Content.Load<Texture2D>("white"), 20, 80, 20, 250, Player1.USreturn, Color.Purple, false);
+            superBar = new Bar(Content.Load<Texture2D>("white"), 20, 110, 20, 250, Player1.superReturn, Color.Yellow, false);
             healthBar.barColor = Color.Green;
             WaitLetGo = false;
+            spawnControl.setup(gruntTexture, eNBTexture, scoutTexture, interceptorTexture);
             spawnControl.characterNo = 0;
             level = 0;
         }

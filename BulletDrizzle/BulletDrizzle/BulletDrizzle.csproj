@@ -130,6 +130,7 @@
     <Compile Include="giantLaser.cs" />
     <Compile Include="grunt.cs" />
     <Compile Include="interceptor.cs" />
+    <Compile Include="medBeam.cs" />
     <Compile Include="mediShip.cs" />
     <Compile Include="menuButton.cs" />
     <Compile Include="player.cs" />

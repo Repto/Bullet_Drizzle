@@ -33,14 +33,34 @@ namespace BulletDrizzle
             origin = new Vector2(0, rectangle.Height / 2);
             forwards = false; backward = false; small = false; large = false;
         }
-        public void Update(KeyboardState keyboard, Vector2 playerPosition, Rectangle playerRectangle, bool UShoot, int laserCooldown, int superCooldown)
+        public void Update(KeyboardState keyboard, MouseState mouse, Vector2 playerPosition, Vector2 screenDimensions, Rectangle playerRectangle, bool UShoot, int laserCooldown, int superCooldown)
         {
-            position.X = playerPosition.X + playerRectangle.Width / 8;
-            position.Y = playerPosition.Y + playerRectangle.Height / 2 - rectangle.Height;
+            position.X = mouse.X + playerRectangle.Width / 8;
+            position.Y = mouse.Y + playerRectangle.Height / 2 - rectangle.Height;
+            if (position.X < 20)
+            {
+                position.X = 20;
+            }
+
+            if (position.X + texture.Width > screenDimensions.X - 120)
+            {
+                position.X = screenDimensions.X - texture.Width - 120;
+            }
+
+            if (position.Y < 20)
+            {
+                position.Y = 20;
+            }
+
+            if (position.Y + texture.Height > screenDimensions.Y - 20)
+            {
+                position.Y = screenDimensions.Y - texture.Height - 20;
+            }
             if (UShoot)
             {
                 direction += 12;
             }
+
             else if (keyboard.IsKeyDown(Keys.D) && laserCooldown == 0)
             {
                 forwards = true;

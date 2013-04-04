@@ -19,7 +19,6 @@ namespace BulletDrizzle
         Texture2D superBulletTexture;
         public Vector2 position;
         Vector2 dimensions;
-        //int speed = 15; this is obselete now
         int countdown = 5;
         public int laserReturn = 720;
         public int laserCooldown = 0;
@@ -35,7 +34,9 @@ namespace BulletDrizzle
         public int superReturn = 120;
         public int superCooldown = 0;
 
-        public player(Texture2D inputTexture, Vector2 screenDimensions, Texture2D inputBulletTexture, Texture2D inputLaserTexture, Texture2D inputUltraBulletTexture, Texture2D inputSuperBulletTexture)
+        List<playerTenticle> tentacles = new List<playerTenticle>();
+
+        public player(Texture2D inputTexture, Vector2 screenDimensions, Texture2D inputBulletTexture, Texture2D inputLaserTexture, Texture2D inputUltraBulletTexture, Texture2D inputSuperBulletTexture, List<playerTenticle> inputTentacles)
         {
             health = startingHealth;
             texture = inputTexture;
@@ -46,55 +47,14 @@ namespace BulletDrizzle
             rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
             laserTexture = inputLaserTexture;
             dimensions = new Vector2(texture.Width, texture.Height);
+            tentacles = inputTentacles;
         }
         public void Update(MouseState mouse, Vector2 screenDimensions, List<playerNormalBullet> bulletList, SoundEffect gunShot, KeyboardState keyboard, List<GiantLaser> laserList, List<playerUltraBullet> ultraBulletList, List<playerBigBullet> superBulletList)
         {
-            if (position.X > 0 && position.X < screenDimensions.X - texture.Width && position.Y > 0 && position.Y < screenDimensions.Y - texture.Height)
+            if (position.X > 0 && position.X < screenDimensions.X - rectangle.Width && position.Y > 0 && position.Y < screenDimensions.Y - rectangle.Height)
             {
-                /*
-                if (mouse.X > position.X + texture.Width / 2)
-                {
-                    position.X += speed;
-                    if (mouse.X < position.X + texture.Width / 2)
-                    {
-                        position.X = mouse.X - texture.Width / 2;
-                    }
-                }
-
-                if (mouse.X < position.X + texture.Width / 2)
-                {
-                    position.X -= speed;
-                    if (mouse.X > position.X + texture.Width / 2)
-                    {
-                        position.X = mouse.X - texture.Width / 2;
-                    }
-                }
-
-                if (mouse.Y > position.Y + texture.Height / 2)
-                {
-                    position.Y += speed;
-                    if (mouse.Y < position.Y + texture.Height / 2)
-                    {
-                        position.Y = mouse.Y - texture.Height / 2;
-                    }
-                }
-
-                if (mouse.Y < position.Y + texture.Height / 2)
-                {
-                    position.Y -= speed;
-                    if (mouse.Y > position.Y + texture.Height / 2)
-                    {
-                        position.Y = mouse.Y - texture.Height / 2;
-                    }
-                }
-                */
-                
-
-                
                 position.X = mouse.X;
                 position.Y = mouse.Y;
-                
-                
 
                 if (position.X < 20)
                 {
@@ -116,6 +76,13 @@ namespace BulletDrizzle
                     position.Y = screenDimensions.Y - texture.Height - 20;
                 }
 
+                //update Tentacles
+                foreach (playerTenticle tentacleHandling in tentacles)
+                {
+                    tentacleHandling.Update(keyboard, mouse, position, screenDimensions, rectangle, ultraShoot, laserCooldown, superCooldown);
+                }
+                
+                //Abilities
                 if (countdown == 0)
                 {
                     if (ultraShoot)
