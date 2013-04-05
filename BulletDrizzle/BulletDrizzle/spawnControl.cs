@@ -13,18 +13,20 @@ namespace BulletDrizzle
         static Texture2D eNBTexture;
         static Texture2D scoutTexture;
         static Texture2D interceptorTexture;
-        static string[] levelSpawns = {"1234ab5cd3a234b64cd2abcda4bcd365abcdabc1243dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
+        static Texture2D mediTexture;
+        static string[] levelSpawns = {"1f00f00f00fb5cd3a234b64cd2abcda4bcd365abcdabc1243dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
         public static int characterNo = 0;
         static int coolDown = 60;
         
-        static public void setup(Texture2D inputGruntTexture, Texture2D inputENBtexture, Texture2D inputScoutTexture, Texture2D inputInterceptorTexture)
+        static public void setup(Texture2D inputGruntTexture, Texture2D inputENBtexture, Texture2D inputScoutTexture, Texture2D inputInterceptorTexture, Texture2D inputMediTexture)
         {
             gruntTexture = inputGruntTexture;
             eNBTexture = inputENBtexture;
             scoutTexture = inputScoutTexture;
             interceptorTexture = inputInterceptorTexture;
+            mediTexture = inputMediTexture;
         }
-        static public void spawn(int level, Vector2 screenDimensions, List<grunt> gruntList, List<scout> scoutList, List<interceptor> interceptorList)
+        static public void spawn(int level, Vector2 screenDimensions, List<grunt> gruntList, List<scout> scoutList, List<interceptor> interceptorList, List<mediShip> mediList)
         {
             if (coolDown == 0)
             {
@@ -116,6 +118,14 @@ namespace BulletDrizzle
                         {
                             Vector2 spawnPosition = new Vector2(screenDimensions.X, screenDimensions.Y / noEnemies * i);
                             scoutList.Add(new scout(spawnPosition, screenDimensions, scoutTexture, eNBTexture));
+                        }
+                        break;
+                    case 'f': //2 medics
+                        noEnemies = 2;
+                        for (int i = 1; i < noEnemies; i++)
+                        {
+                            Vector2 spawnPosition = new Vector2(screenDimensions.X, (screenDimensions.Y / noEnemies * i) - mediTexture.Height / 2);
+                            mediList.Add(new mediShip(spawnPosition, screenDimensions, mediTexture));
                         }
                         break;
                 }

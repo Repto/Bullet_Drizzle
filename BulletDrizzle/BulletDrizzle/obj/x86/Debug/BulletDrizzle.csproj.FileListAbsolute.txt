@@ -156,3 +156,4 @@ C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizz
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\playerTenticle.xnb
 C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\playerTenticle.xnb
 C:\Users\Sarita\Documents\Visual Studio 2010\Projects\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\enemyScout.xnb
+C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\medic.xnb

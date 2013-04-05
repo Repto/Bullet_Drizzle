@@ -34,6 +34,7 @@ namespace BulletDrizzle
         List<grunt> gruntList = new List<grunt>();
         List<scout> scoutList = new List<scout>();
         List<interceptor> interceptorList = new List<interceptor>();
+        List<mediShip> mediList = new List<mediShip>();
 
         //Effects List
         List<ExplosionParticle> explosionsList = new List<ExplosionParticle>();
@@ -66,6 +67,7 @@ namespace BulletDrizzle
         Texture2D BBTexture;
         Texture2D scoutTexture;
         Texture2D interceptorTexture;
+        Texture2D mediTexture;
         Texture2D eNBTexture;
         Texture2D UBTexture;
         Texture2D laserTexture;
@@ -88,6 +90,7 @@ namespace BulletDrizzle
         int gruntKillScore = 100;
         int scoutKillScore = 200;
         int interceptorKillScore = 500;
+        int mediKillScore = 1000;
         int level;
         
         int totalSecondTime = 0;
@@ -141,6 +144,7 @@ namespace BulletDrizzle
             gruntTexture = Content.Load<Texture2D>("enemyGrunt");
             scoutTexture = Content.Load<Texture2D>("enemyScout");
             interceptorTexture = Content.Load<Texture2D>("enemyInterceptor");
+            mediTexture = Content.Load<Texture2D>("medic");
             eNBTexture = Content.Load<Texture2D>("ememybullet"); //for moment using normal bullet tex for enemy bullet tex, dunno if we'll change this
             explosionTextureOne = Content.Load<Texture2D>("explosion");
             menuTexture = Content.Load<Texture2D>("menuscreen");
@@ -242,7 +246,7 @@ namespace BulletDrizzle
 
                 //Testing over: all spawns go in this section (using different countdowns)
 
-                spawnControl.spawn(level, screenDimensions, gruntList, scoutList, interceptorList);
+                spawnControl.spawn(level, screenDimensions, gruntList, scoutList, interceptorList, mediList);
 
                 /*if (gruntSpawnCountdown == 0)
                 {
@@ -282,6 +286,12 @@ namespace BulletDrizzle
                 {
                     interceptorHandling.Update(eNBlist, pNBlist);
                     if (interceptorHandling.bulletCoolDown == 0) { interceptorHandling.fire(); }
+                }
+
+                foreach (mediShip mediHandling in mediList)
+                {
+                    mediHandling.Update(eNBlist, pNBlist);
+                    //Doesn't fire.
                 }
 
                 //Enemy hit test
@@ -356,6 +366,30 @@ namespace BulletDrizzle
                     }
                 }
 
+                for (int i = 0; i < pNBlist.Count; i++)
+                {
+                    for (int j = 0; j < mediList.Count; j++)
+                    {
+                        if (pNBlist[i].rectangle.Intersects(mediList[j].rectangle))
+                        {
+                            pNBlist[i].deleteMark = true;
+                            mediList[j].health -= pNBlist[i].damage;
+                        }
+                    }
+                }
+
+                for (int i = 0; i < pUBlist.Count; i++)
+                {
+                    for (int j = 0; j < mediList.Count; j++)
+                    {
+                        if (pUBlist[i].rectangle.Intersects(mediList[j].rectangle))
+                        {
+                            pUBlist[i].deleteMark = true;
+                            mediList[j].health -= pUBlist[i].damage;
+                        }
+                    }
+                }
+
                 for (int i = 0; i < superBulletList.Count; i++)
                 {
                     for (int j = 0; j < gruntList.Count; j++)
@@ -414,6 +448,14 @@ namespace BulletDrizzle
                         if (interceptorHandling.rectangle.Intersects(laserList[0].rectangle))
                         {
                             interceptorHandling.health -= laserList[0].damage;
+                        }
+                    }
+
+                    foreach (mediShip mediHandling in mediList)
+                    {
+                        if (mediHandling.rectangle.Intersects(laserList[0].rectangle))
+                        {
+                            mediHandling.health -= laserList[0].damage;
                         }
                     }
                 }
@@ -489,6 +531,20 @@ namespace BulletDrizzle
                     }
                 }
 
+                for (int i = 0; i < mediList.Count; i++)
+                {
+                    if (mediList[i].health < 0)
+                    {
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(mediList[i].position.X + mediList[i].texture.Width / 2, mediList[i].position.Y + mediList[i].texture.Height / 2), random));
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(mediList[i].position.X + mediList[i].texture.Width / 2, mediList[i].position.Y + mediList[i].texture.Height / 2), random));
+                        explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(mediList[i].position.X + mediList[i].texture.Width / 2, mediList[i].position.Y + mediList[i].texture.Height / 2), random));
+                        mediList.RemoveAt(i);
+                        i--;
+                        explodeSound.Play(0.2F, 0, 0);
+                        score += mediKillScore;
+                    }
+                }
+
                 for (int i = 0; i < explosionsList.Count; i++)
                 {
                     if (explosionsList[i].countdown < 1)
@@ -543,6 +599,16 @@ namespace BulletDrizzle
                     {
                         gruntList.RemoveAt(i);
                         score -= gruntKillScore * 5;
+                        if (i > 0) { i--; } else { break; }
+                    }
+                }
+
+                for (int i = 0; i < mediList.Count; i++)
+                {
+                    if (mediList[i].rectangle.X < -mediList[i].texture.Width)
+                    {
+                        mediList.RemoveAt(i);
+                        score -= mediKillScore * 5;
                         if (i > 0) { i--; } else { break; }
                     }
                 }
@@ -661,6 +727,10 @@ namespace BulletDrizzle
                 {
                     interceptorHandling.Draw(spriteBatch);
                 }
+                foreach (mediShip mediHandling in mediList)
+                {
+                    mediHandling.Draw(spriteBatch);
+                }
 
                 //Draw Tentacles and other graphical effects
                 foreach (playerTenticle tentacleHandling in playerTentacles)
@@ -726,6 +796,7 @@ namespace BulletDrizzle
             interceptorList.Clear();
             scoutList.Clear();
             gruntList.Clear();
+            mediList.Clear();
             laserList.Clear();
             totalSecondTime = 0;
             totalMilliTime = 0;
@@ -742,7 +813,7 @@ namespace BulletDrizzle
             superBar = new Bar(Content.Load<Texture2D>("white"), 20, 110, 20, 250, Player1.superReturn, Color.Yellow, false);
             healthBar.barColor = Color.Green;
             WaitLetGo = false;
-            spawnControl.setup(gruntTexture, eNBTexture, scoutTexture, interceptorTexture);
+            spawnControl.setup(gruntTexture, eNBTexture, scoutTexture, interceptorTexture, mediTexture);
             spawnControl.characterNo = 0;
             level = 0;
         }
