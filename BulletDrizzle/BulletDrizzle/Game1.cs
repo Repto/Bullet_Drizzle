@@ -35,6 +35,8 @@ namespace BulletDrizzle
         List<scout> scoutList = new List<scout>();
         List<interceptor> interceptorList = new List<interceptor>();
         List<mediShip> mediList = new List<mediShip>();
+        List<List<enemy>> totalList = new List<List<enemy>>();
+        List<medBeam> beamList = new List<medBeam>();
 
         //Effects List
         List<ExplosionParticle> explosionsList = new List<ExplosionParticle>();
@@ -287,10 +289,13 @@ namespace BulletDrizzle
                     interceptorHandling.Update(eNBlist, pNBlist);
                     if (interceptorHandling.bulletCoolDown == 0) { interceptorHandling.fire(); }
                 }
-
+                beamList.Clear();
                 foreach (mediShip mediHandling in mediList)
                 {
+                    totalList.Clear(); totalList.Add(gruntList.Cast<enemy>().ToList()); totalList.Add(scoutList.Cast<enemy>().ToList()); totalList.Add(interceptorList.Cast<enemy>().ToList());
                     mediHandling.Update(eNBlist, pNBlist);
+                    mediHandling.Heal(totalList, beamList
+                        );
                     //Doesn't fire.
                 }
 
@@ -694,7 +699,10 @@ namespace BulletDrizzle
             spriteBatch.Begin();
             if (gameState == GameState.main)
             {
-
+                foreach (medBeam beam in beamList)
+                {
+                    beam.Draw(spriteBatch);
+                }
                 //Draw projectile lists
                 foreach (playerNormalBullet bulletHandling in pNBlist)
                 {
@@ -771,11 +779,10 @@ namespace BulletDrizzle
 
             else if (gameState == GameState.gameOver)
             {
-                    spriteBatch.Draw(gameOverTexture, new Rectangle(0, 0, (int)screenDimensions.X, (int)screenDimensions.Y), Color.White);
-                    returnButton.Draw(spriteBatch);
-                    quitButton.Draw(spriteBatch);
-                    spriteBatch.DrawString(bigFont, "Your Score Was:" + score.ToString(), new Vector2((screenDimensions.X / 2) - (((48 * score.ToString().Length) / 2 + (6 * 48))), (int)(screenDimensions.Y * 0.45)), Color.White);
-                
+                spriteBatch.Draw(gameOverTexture, new Rectangle(0, 0, (int)screenDimensions.X, (int)screenDimensions.Y), Color.White);
+                returnButton.Draw(spriteBatch);
+                quitButton.Draw(spriteBatch);
+                spriteBatch.DrawString(bigFont, "Your Score Was:" + score.ToString(), new Vector2((screenDimensions.X / 2) - (((48 * score.ToString().Length) / 2 + (6 * 48))), (int)(screenDimensions.Y * 0.45)), Color.White);
             }
 
 
@@ -813,7 +820,7 @@ namespace BulletDrizzle
             superBar = new Bar(Content.Load<Texture2D>("white"), 20, 110, 20, 250, Player1.superReturn, Color.Yellow, false);
             healthBar.barColor = Color.Green;
             WaitLetGo = false;
-            spawnControl.setup(gruntTexture, eNBTexture, scoutTexture, interceptorTexture, mediTexture);
+            spawnControl.setup(gruntTexture, eNBTexture, scoutTexture, interceptorTexture, mediTexture, Content.Load<Texture2D>("beamSlice"));
             spawnControl.characterNo = 0;
             level = 0;
         }

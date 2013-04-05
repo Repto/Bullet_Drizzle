@@ -209,6 +209,15 @@
       <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\medic.xnb</Output>
       <Time>2013-04-05T06:52:16.7172515+01:00</Time>
     </Item>
+    <Item>
+      <Source>beamSlice.png</Source>
+      <Name>beamSlice</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jacob.Menkus\Documents\GitHub\Bullet_Drizzle\BulletDrizzle\BulletDrizzle\bin\x86\Debug\Content\beamSlice.xnb</Output>
+      <Time>2013-04-05T07:42:37.7781018+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

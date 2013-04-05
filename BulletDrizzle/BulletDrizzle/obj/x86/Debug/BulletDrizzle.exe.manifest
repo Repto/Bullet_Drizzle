@@ -93,17 +93,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="40960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="41984">
       <assemblyIdentity name="BulletDrizzle" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Ir+uIeQLWTqXc+nT9YfcTZRkdZg=</dsig:DigestValue>
+        <dsig:DigestValue>XUChbD98zC1ulcvfW7/JOo3GSYI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="Content\beamSlice.xnb" size="227">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>AiBj9Mx7iAbMyrooseQ6qKr40Bs=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\bigbullet.xnb" size="22687">
     <hash>
       <dsig:Transforms>

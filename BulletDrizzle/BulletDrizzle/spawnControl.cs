@@ -14,17 +14,20 @@ namespace BulletDrizzle
         static Texture2D scoutTexture;
         static Texture2D interceptorTexture;
         static Texture2D mediTexture;
-        static string[] levelSpawns = {"1f00f00f00fb5cd3a234b64cd2abcda4bcd365abcdabc1243dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
+        static Texture2D mediBeamTexture;
+        //NEVER have more than one medi at a time, or this will become lag central!
+        static string[] levelSpawns = {"1f00111111100fb5cd3a234b64cd2abcda4bcd365abcdabc1243dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
         public static int characterNo = 0;
         static int coolDown = 60;
         
-        static public void setup(Texture2D inputGruntTexture, Texture2D inputENBtexture, Texture2D inputScoutTexture, Texture2D inputInterceptorTexture, Texture2D inputMediTexture)
+        static public void setup(Texture2D inputGruntTexture, Texture2D inputENBtexture, Texture2D inputScoutTexture, Texture2D inputInterceptorTexture, Texture2D inputMediTexture, Texture2D inputMediBeamTexture)
         {
             gruntTexture = inputGruntTexture;
             eNBTexture = inputENBtexture;
             scoutTexture = inputScoutTexture;
             interceptorTexture = inputInterceptorTexture;
             mediTexture = inputMediTexture;
+            mediBeamTexture = inputMediBeamTexture;
         }
         static public void spawn(int level, Vector2 screenDimensions, List<grunt> gruntList, List<scout> scoutList, List<interceptor> interceptorList, List<mediShip> mediList)
         {
@@ -125,7 +128,7 @@ namespace BulletDrizzle
                         for (int i = 1; i < noEnemies; i++)
                         {
                             Vector2 spawnPosition = new Vector2(screenDimensions.X, (screenDimensions.Y / noEnemies * i) - mediTexture.Height / 2);
-                            mediList.Add(new mediShip(spawnPosition, screenDimensions, mediTexture));
+                            mediList.Add(new mediShip(spawnPosition, screenDimensions, mediTexture, mediBeamTexture));
                         }
                         break;
                 }
