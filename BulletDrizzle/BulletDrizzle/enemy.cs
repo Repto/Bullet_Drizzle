@@ -9,7 +9,7 @@ namespace BulletDrizzle
 {
     class enemy
     {
-        public int health;
+        public float health;
         public int startingHealth;
         public Vector2 position;
         public Texture2D texture;

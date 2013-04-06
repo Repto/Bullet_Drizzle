@@ -16,7 +16,7 @@ namespace BulletDrizzle
         static Texture2D mediTexture;
         static Texture2D mediBeamTexture;
         //NEVER have more than one medi at a time, or this will become lag central!
-        static string[] levelSpawns = {"1f00111111100fb5cd3a234b64cd2abcda4bcd365abcdabc1243dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
+        static string[] levelSpawns = {"1f00100f234100fb5f00cd3a234b64f00cd2abcda4f00bcd365abcdaf00bcf0012f0043f00dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
         public static int characterNo = 0;
         static int coolDown = 60;
         

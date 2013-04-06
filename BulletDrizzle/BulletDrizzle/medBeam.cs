@@ -22,11 +22,11 @@ namespace BulletDrizzle
             texture = inputTexture;
             rectangle.X = (int)shipPosition.X + rectangle.Width / 2;
             rectangle.Y = (int)shipPosition.Y + rectangle.Height / 2;
-
-            direction = (float)Math.Atan((double)((woundedPosition.Y - shipPosition.Y) / (woundedPosition.X / shipPosition.X)));
             rectangle.Height = texture.Height;
-            temporaryVector = new Vector2(woundedPosition.X + woundedRectangle.Width / 2, woundedPosition.Y + woundedRectangle.Height / 2);
+            //Minus What? What???
+            temporaryVector = new Vector2(woundedPosition.X + woundedRectangle.Width / 2, woundedPosition.Y - woundedRectangle.Height / 2 );
             rectangle.Width = (int)workOutDistance(new Vector2(rectangle.X, rectangle.Y), temporaryVector);
+            direction = workOutDirection(new Vector2(rectangle.X, rectangle.Y), temporaryVector);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -40,6 +40,13 @@ namespace BulletDrizzle
             deltaY = otherShip.Y - medShip.Y;
             hypotenuseSquared = (deltaX * deltaX) + (deltaY * deltaY);
             return (float)(Math.Sqrt(hypotenuseSquared));
+        }
+
+        public float workOutDirection(Vector2 medShip, Vector2 otherShip)
+        {
+            deltaX = otherShip.X - medShip.X;
+            deltaY = otherShip.Y - medShip.Y;
+            return (float)(Math.Atan2(deltaX, deltaY)) - (float)(90 * 0.0174532925);
         }
     }
 }

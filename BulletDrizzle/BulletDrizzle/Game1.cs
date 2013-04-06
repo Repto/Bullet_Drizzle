@@ -106,7 +106,7 @@ namespace BulletDrizzle
             //Graphics modifications
             graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
             graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             this.IsMouseVisible = true;
             graphics.ApplyChanges();
 
@@ -294,8 +294,8 @@ namespace BulletDrizzle
                 {
                     totalList.Clear(); totalList.Add(gruntList.Cast<enemy>().ToList()); totalList.Add(scoutList.Cast<enemy>().ToList()); totalList.Add(interceptorList.Cast<enemy>().ToList());
                     mediHandling.Update(eNBlist, pNBlist);
-                    mediHandling.Heal(totalList, beamList
-                        );
+                    mediHandling.Heal(totalList);
+                    mediHandling.manageBeams(beamList);
                     //Doesn't fire.
                 }
 

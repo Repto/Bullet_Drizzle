@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="41984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="42496">
       <assemblyIdentity name="BulletDrizzle" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>XUChbD98zC1ulcvfW7/JOo3GSYI=</dsig:DigestValue>
+        <dsig:DigestValue>s93EJOgNLFpbTB7OQdsnzLIGUko=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -110,7 +110,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>AiBj9Mx7iAbMyrooseQ6qKr40Bs=</dsig:DigestValue>
+      <dsig:DigestValue>VPBSDdwUeXVXoAy+lc9+tyYrTng=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\bigbullet.xnb" size="22687">

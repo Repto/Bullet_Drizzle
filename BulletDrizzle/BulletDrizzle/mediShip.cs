@@ -9,10 +9,11 @@ namespace BulletDrizzle
 {
     class mediShip : enemy
     {
-        int healSpeed = 1;
+        float healSpeed = 0.1f;
         Texture2D beamTexture;
         //This next one is hilarious
         List<List<enemy>> ListOfEnemyLists = new List<List<enemy>>();
+        List<enemy> ListOfAllEnemies = new List<enemy>();
         List<enemy> alreadyHealing = new List<enemy>();
         List<enemy> impossible = new List<enemy>();
         Random randomGenerator = new Random();
@@ -35,38 +36,46 @@ namespace BulletDrizzle
             speed = 2;
             health = 50;
         }
-        public void Heal(List<List<enemy>> totalList, List<medBeam> beamList)
+        public void Heal(List<List<enemy>> totalList)
         {
             ListOfEnemyLists = totalList;
-            alreadyHealing.Clear();
-           //Can't heal scouts, as they die after one hit, so healing them would not make them any sturdier (they'd die before being healed).
+            ListOfAllEnemies.Clear();
+            foreach (List<enemy> list in ListOfEnemyLists)
+            {
+                foreach (enemy item in list)
+                {
+                    ListOfAllEnemies.Add(item);
+                }
+            }
+            
+           alreadyHealing.Clear();
+           impossible.Clear();
            for (int i = 0; i < maxHealsAtOneTime; i++)
            {
-               int randomSection = randomGenerator.Next(0, ListOfEnemyLists.Count - 1);
-               if (ListOfEnemyLists[randomSection].Count > 0)
+               if (ListOfAllEnemies.Count > 0)
                {
-                   if (isHealAble(closestEnemyInList(ListOfEnemyLists[randomSection], alreadyHealing, impossible)))
+                   if (isHealAble(closestEnemyInList(ListOfAllEnemies, alreadyHealing, impossible)))
                    {
-                       addHealth(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing, impossible));
-                       alreadyHealing.Add(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing, impossible));
+                       addHealth(closestEnemyInList(ListOfAllEnemies, alreadyHealing, impossible));
+                       alreadyHealing.Add(closestEnemyInList(ListOfAllEnemies, alreadyHealing, impossible));
                    }
-                   else { i--; }
-                   impossible.Add(closestEnemyInList(ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)], alreadyHealing, impossible));
-                   if (ListOfEnemyLists[randomGenerator.Next(0, ListOfEnemyLists.Count - 1)].Count == 0) { return; }
+                   else { i--; impossible.Add(closestEnemyInList(ListOfAllEnemies, alreadyHealing, impossible)); }
+                   if (impossible.Count + alreadyHealing.Count >= ListOfAllEnemies.Count) { return; }
                }
                else
                {
-                   i--;
+                   return;
                }
            }
-           foreach (enemy wounded in alreadyHealing)
-           {
-               if (wounded != null)
-               {
-                   beamList.Add(new medBeam(beamTexture, position, rectangle, wounded.position, wounded.rectangle));
-               }
-           }
+       }
+        public void manageBeams(List<medBeam> beamList)
+        {
+            foreach (enemy wounded in alreadyHealing)
+            {
+                beamList.Add(new medBeam(beamTexture, new Vector2(position.X + rectangle.Width / 2, position.Y + rectangle.Height / 2), rectangle, wounded.position, wounded.rectangle));
+            }
         }
+     
 
         //Pythagoras etc. distance working out (having medi-ship heal closest enemy is easiest)
         public float workOutDistance(Vector2 medShip, Vector2 otherShip)
