@@ -16,7 +16,7 @@ namespace BulletDrizzle
         static Texture2D mediTexture;
         static Texture2D mediBeamTexture;
         //NEVER have more than one medi at a time, or this will become lag central!
-        static string[] levelSpawns = {"1f00100f234100fb5f00cd3a234b64f00cd2abcda4f00bcd365abcdaf00bcf0012f0043f00dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
+        static string[] levelSpawns = {"g0g0g0g0g0g0g0g0f00100f234100fb5f00cd3a234b64f00cd2abcda4f00bcd365abcdaf00bcf0012f0043f00dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
         public static int characterNo = 0;
         static int coolDown = 60;
         
@@ -123,12 +123,20 @@ namespace BulletDrizzle
                             scoutList.Add(new scout(spawnPosition, screenDimensions, scoutTexture, eNBTexture));
                         }
                         break;
-                    case 'f': //2 medics
+                    case 'f': //1 medic
                         noEnemies = 2;
                         for (int i = 1; i < noEnemies; i++)
                         {
                             Vector2 spawnPosition = new Vector2(screenDimensions.X, (screenDimensions.Y / noEnemies * i) - mediTexture.Height / 2);
                             mediList.Add(new mediShip(spawnPosition, screenDimensions, mediTexture, mediBeamTexture));
+                        }
+                        break;
+                    case 'g': //1 interceptor
+                        noEnemies = 2;
+                        for (int i = 1; i < noEnemies; i++)
+                        {
+                            Vector2 spawnPosition = new Vector2(screenDimensions.X, (screenDimensions.Y / noEnemies * i) - interceptorTexture.Height / 2);
+                            interceptorList.Add(new interceptor(spawnPosition, screenDimensions, interceptorTexture, eNBTexture));
                         }
                         break;
                 }

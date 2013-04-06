@@ -99,7 +99,6 @@ namespace BulletDrizzle
             {
                 if (Enemy.health > Enemy.startingHealth - healSpeed) { Enemy.health = Enemy.startingHealth; }
                 else { Enemy.health += healSpeed; }
-                Console.WriteLine("I healed Someone!");
             }
         }
 

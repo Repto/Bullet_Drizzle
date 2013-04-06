@@ -56,6 +56,7 @@ namespace BulletDrizzle
         Bar laserBar;
         Bar ultraBar;
         Bar superBar;
+        Bar adrenalineBar;
         menuButton playButton;
         menuButton quitButton;
         menuButton returnButton;
@@ -215,6 +216,7 @@ namespace BulletDrizzle
                 laserBar.Update(Player1.laserReturn - Player1.laserCooldown);
                 ultraBar.Update(Player1.USreturn - Player1.USCountdown);
                 superBar.Update(Player1.superReturn - Player1.superCooldown);
+                adrenalineBar.Update(Player1.adrenalineReturn - Player1.adrenalineCountdown);
 
                 //Projectiles Update
                 foreach (playerNormalBullet bulletHandling in pNBlist)
@@ -526,6 +528,10 @@ namespace BulletDrizzle
                 {
                     if (interceptorList[i].health < 0)
                     {
+                        for (int j = 200; j <= 340; j += 10)
+                        {
+                            eNBlist.Add(new enemyNormalBullet(interceptorList[i].position, new Vector2(interceptorList[i].rectangle.Width, interceptorList[i].rectangle.Height), eNBTexture, (float)(j * 0.0174532925)));
+                        }
                         explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(interceptorList[i].position.X + interceptorList[i].texture.Width / 2, interceptorList[i].position.Y + interceptorList[i].texture.Height / 2), random));
                         explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(interceptorList[i].position.X + interceptorList[i].texture.Width / 2, interceptorList[i].position.Y + interceptorList[i].texture.Height / 2), random));
                         explosionsList.Add(new ExplosionParticle(explosionTextureOne, new Vector2(interceptorList[i].position.X + interceptorList[i].texture.Width / 2, interceptorList[i].position.Y + interceptorList[i].texture.Height / 2), random));
@@ -752,6 +758,7 @@ namespace BulletDrizzle
                 laserBar.Draw(spriteBatch);
                 ultraBar.Draw(spriteBatch);
                 superBar.Draw(spriteBatch);
+                adrenalineBar.Draw(spriteBatch);
 
                 foreach (GiantLaser laser in laserList)
                 {
@@ -814,10 +821,11 @@ namespace BulletDrizzle
             playerTentacles.Add(new playerTenticle(tenticleTexture, 130));
             playerTentacles.Add(new playerTenticle(tenticleTexture, 160));
             Player1 = new player(playerTexture, screenDimensions, pNBTexture, laserTexture, UBTexture, BBTexture, playerTentacles);
-            healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 20, 250, Player1.startingHealth, Color.White, true);
-            laserBar = new Bar(Content.Load<Texture2D>("white"), 20, 50, 20, 250, Player1.laserReturn, Color.Red, false);
-            ultraBar = new Bar(Content.Load<Texture2D>("white"), 20, 80, 20, 250, Player1.USreturn, Color.Purple, false);
-            superBar = new Bar(Content.Load<Texture2D>("white"), 20, 110, 20, 250, Player1.superReturn, Color.Yellow, false);
+            healthBar = new Bar(Content.Load<Texture2D>("white"), 20, 20, 50, 350, Player1.startingHealth, Color.White, true);
+            laserBar = new Bar(Content.Load<Texture2D>("white"), 390, 50, 20, 250, Player1.laserReturn, Color.Red, false);
+            ultraBar = new Bar(Content.Load<Texture2D>("white"), 660, 50, 20, 250, Player1.USreturn, Color.Purple, false);
+            superBar = new Bar(Content.Load<Texture2D>("white"), 390, 20, 20, 250, Player1.superReturn, Color.Yellow, false);
+            adrenalineBar = new Bar(Content.Load<Texture2D>("white"), 660, 20, 20, 250, Player1.adrenalineReturn, Color.Blue, false);
             healthBar.barColor = Color.Green;
             WaitLetGo = false;
             spawnControl.setup(gruntTexture, eNBTexture, scoutTexture, interceptorTexture, mediTexture, Content.Load<Texture2D>("beamSlice"));

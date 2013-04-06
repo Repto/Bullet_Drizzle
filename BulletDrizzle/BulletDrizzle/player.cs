@@ -19,10 +19,11 @@ namespace BulletDrizzle
         Texture2D superBulletTexture;
         public Vector2 position;
         Vector2 dimensions;
+        int bulletReturn = 5;
         int countdown = 5;
         public int laserReturn = 720;
         public int laserCooldown = 0;
-        public int startingHealth = 1000;
+        public int startingHealth = 300;
         public int health;
 
         public bool ultraShoot = false;
@@ -33,6 +34,10 @@ namespace BulletDrizzle
 
         public int superReturn = 120;
         public int superCooldown = 0;
+        public int adrenalineReturn = 600;
+        public int adrenalineCountdown = 0;
+        int adrLast;
+        int adrDuration = 120;
 
         List<playerTenticle> tentacles = new List<playerTenticle>();
 
@@ -107,16 +112,16 @@ namespace BulletDrizzle
                         bulletList.Add(new playerNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(90 * 0.0174532925)));
                         bulletList.Add(new playerNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(80 * 0.0174532925)));
                         bulletList.Add(new playerNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(100 * 0.0174532925)));
-                        countdown = 5;
+                        countdown = bulletReturn;
                     }
                     else if (mouse.RightButton == ButtonState.Pressed)
                     {
                         bulletList.Add(new playerNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(0 * 0.0174532925)));
                         bulletList.Add(new playerNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(180 * 0.0174532925)));
-                        countdown = 5;
+                        countdown = bulletReturn;
                     }
 
-                    if (countdown == 5)
+                    if (countdown == bulletReturn)
                     {
                         gunShot.Play();
                     }
@@ -148,7 +153,22 @@ namespace BulletDrizzle
                         superBulletList.Add(new playerBigBullet(position, new Vector2(texture.Width, texture.Height), superBulletTexture, (float)(90 * 0.0174532925)));
                     }
                 }
+
+                if (adrenalineCountdown == 0)
+                {
+                    if (keyboard.IsKeyDown(Keys.A))
+                    {
+                        bulletReturn = 1;
+                        adrLast = adrDuration;
+                        adrenalineCountdown = adrenalineReturn;
+                    }
+                }
+
+
                 if (ultraShoot) USLast--;
+                if (adrLast > 0) adrLast--;
+                if (adrLast == 0) bulletReturn = 5;
+                if (adrenalineCountdown > 0) adrenalineCountdown--;
                 if (countdown > 0) { countdown--; }
                 if (laserCooldown > 0) { laserCooldown--; }
                 if (USCountdown > 0) { USCountdown--; }
