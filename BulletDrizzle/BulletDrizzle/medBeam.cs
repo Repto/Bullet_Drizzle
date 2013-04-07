@@ -20,13 +20,13 @@ namespace BulletDrizzle
         public medBeam(Texture2D inputTexture, Vector2 shipPosition, Rectangle medicRectangle, Vector2 woundedPosition, Rectangle woundedRectangle)
         {
             texture = inputTexture;
-            rectangle.X = (int)shipPosition.X + rectangle.Width / 2;
-            rectangle.Y = (int)shipPosition.Y + rectangle.Height / 2;
+            rectangle.X = (int)shipPosition.X + medicRectangle.Width / 2;
+            rectangle.Y = (int)shipPosition.Y + medicRectangle.Height / 2 - texture.Height / 2;
             rectangle.Height = texture.Height;
-            //Minus What? What???
-            temporaryVector = new Vector2(woundedPosition.X + woundedRectangle.Width / 2, woundedPosition.Y - woundedRectangle.Height / 2 );
-            rectangle.Width = (int)workOutDistance(new Vector2(rectangle.X, rectangle.Y), temporaryVector);
-            direction = workOutDirection(new Vector2(rectangle.X, rectangle.Y), temporaryVector);
+            //Plus What? What???
+            temporaryVector = new Vector2(woundedPosition.X + woundedRectangle.Width / 2, woundedPosition.Y + woundedRectangle.Height / 2 + medicRectangle.Height / 2);
+            rectangle.Width = (int)workOutDistance(new Vector2(rectangle.X, rectangle.Y + texture.Height / 2), temporaryVector);
+            direction = workOutDirection(new Vector2(rectangle.X, rectangle.Y + texture.Height / 2), temporaryVector);
         }
 
         public void Draw(SpriteBatch spriteBatch)

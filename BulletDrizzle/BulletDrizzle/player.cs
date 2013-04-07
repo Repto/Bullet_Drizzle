@@ -21,7 +21,7 @@ namespace BulletDrizzle
         Vector2 dimensions;
         int bulletReturn = 5;
         int countdown = 5;
-        public int laserReturn = 720;
+        public int laserReturn = 300;
         public int laserCooldown = 0;
         public int startingHealth = 300;
         public int health;
@@ -30,14 +30,14 @@ namespace BulletDrizzle
         public int USreturn = 6000;
         public int USCountdown = 0;
         int USLast;
-        int USDuration = 300;
+        int USDuration = 240;
 
-        public int superReturn = 120;
+        public int superReturn = 60;
         public int superCooldown = 0;
-        public int adrenalineReturn = 600;
+        public int adrenalineReturn = 7200;
         public int adrenalineCountdown = 0;
         int adrLast;
-        int adrDuration = 120;
+        int adrDuration = 240;
 
         List<playerTenticle> tentacles = new List<playerTenticle>();
 

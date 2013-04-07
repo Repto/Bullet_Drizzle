@@ -15,11 +15,12 @@ namespace BulletDrizzle
         static Texture2D interceptorTexture;
         static Texture2D mediTexture;
         static Texture2D mediBeamTexture;
-        //NEVER have more than one medi at a time, or this will become lag central!
-        static string[] levelSpawns = {"g0g0g0g0g0g0g0g0f00100f234100fb5f00cd3a234b64f00cd2abcda4f00bcd365abcdaf00bcf0012f0043f00dab234cda543bcdbacabdabcdbacbadbacbadbcbadbcabcbcda","abcabc"};
+        //Breaks are needed after some enemies because they are slow. f00 and g0 are necessary. Info: 6 = max grunts. e = max scouts. f = medic. g = interceptor
+        static string[] levelSpawns = {"123456abcd123456f00f00abcd123456g0g0g0abccd1234566f006f006a1b2c3d4d5e6e6e6e6e6f6ef6ef6ef6ef6ef6e"};
         public static int characterNo = 0;
         static int coolDown = 60;
-        
+        public static bool levelOver = false;
+
         static public void setup(Texture2D inputGruntTexture, Texture2D inputENBtexture, Texture2D inputScoutTexture, Texture2D inputInterceptorTexture, Texture2D inputMediTexture, Texture2D inputMediBeamTexture)
         {
             gruntTexture = inputGruntTexture;
@@ -29,9 +30,9 @@ namespace BulletDrizzle
             mediTexture = inputMediTexture;
             mediBeamTexture = inputMediBeamTexture;
         }
-        static public void spawn(int level, Vector2 screenDimensions, List<grunt> gruntList, List<scout> scoutList, List<interceptor> interceptorList, List<mediShip> mediList)
+        static public void spawn(int level, Vector2 screenDimensions, List<grunt> gruntList, List<scout> scoutList, List<interceptor> interceptorList, List<mediShip> mediList, bool waitLetGo)
         {
-            if (coolDown == 0)
+            if (coolDown == 0 && characterNo < (levelSpawns[level].Length))
             {
                 switch (levelSpawns[level][characterNo])
                 {
@@ -142,12 +143,12 @@ namespace BulletDrizzle
                 }
                 characterNo++;
                 coolDown = 60;
-                if (characterNo > levelSpawns[level].Length)
+                if (characterNo == levelSpawns[level].Length)
                 {
-                    characterNo = 0;
-                    level++;
+                    levelOver = true;
+                    waitLetGo = false;
                 }
-                if (level > levelSpawns.Length)
+                if (level == levelSpawns.Length)
                 {
                     return;
                 }

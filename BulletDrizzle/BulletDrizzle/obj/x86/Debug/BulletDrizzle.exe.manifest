@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="43008">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BulletDrizzle.exe" size="44032">
       <assemblyIdentity name="BulletDrizzle" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>1PkBqDK39WpMe1a8HH3ygAALLC0=</dsig:DigestValue>
+        <dsig:DigestValue>hIbuwDzfYShm/UxRiqk0Q2Ewl/M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -221,6 +221,15 @@
       <dsig:DigestValue>Hhc2xcGzLRDVWdaouAiDuBzU3BY=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Content\leveloverscreen.xnb" size="2304187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>FEB6HMbtGCPo+9ytwRwHd5LMcfw=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\medic.xnb" size="108187">
     <hash>
       <dsig:Transforms>
@@ -228,6 +237,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>3ItunTAJeDv0Je3yp+wqJ9fRqYo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\menureturnbutton.xnb" size="61027">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>QU60BiYwZyZj8LA/6BvoGq80YnA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\menuscreen.xnb" size="2304187">

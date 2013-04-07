@@ -72,7 +72,7 @@ namespace BulletDrizzle
         {
             foreach (enemy wounded in alreadyHealing)
             {
-                beamList.Add(new medBeam(beamTexture, new Vector2(position.X + rectangle.Width / 2, position.Y + rectangle.Height / 2), rectangle, wounded.position, wounded.rectangle));
+                beamList.Add(new medBeam(beamTexture, position, rectangle, wounded.position, wounded.rectangle));
             }
         }
      

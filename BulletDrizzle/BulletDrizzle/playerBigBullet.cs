@@ -17,7 +17,7 @@ namespace BulletDrizzle
             position.Y = rectangle.Y;
             speed = 30;
             direction = inputDirection;
-            damage = 20;
+            damage = 5;
         }
     }
 }

@@ -41,7 +41,7 @@ namespace BulletDrizzle
         }
         public void fire()
         {
-            bulletList.Add(new enemyNormalBullet(position, new Vector2(texture.Width, texture.Height), bulletTexture, (float)(270 * 0.0174532925)));
+            bulletList.Add(new enemyNormalBullet(position, new Vector2(rectangle.Width, rectangle.Height), bulletTexture, (float)(270 * 0.0174532925)));
             bulletCoolDown = 5;
         }
     }
